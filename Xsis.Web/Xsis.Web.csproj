@@ -135,8 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BiodataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KeahlianController.cs" />
+    <Compile Include="Controllers\KeluargaController.cs" />
     <Compile Include="Controllers\PekerjaanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -158,6 +160,9 @@
     <Content Include="Views\Keahlian\_Edit.cshtml" />
     <Content Include="Views\Pekerjaan\Index.cshtml" />
     <Content Include="Views\Pekerjaan\_Create.cshtml" />
+    <Content Include="Views\Keluarga\Index.cshtml" />
+    <Content Include="Views\Keluarga\_Create.cshtml" />
+    <Content Include="Views\Keluarga\_Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -168,6 +173,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Biodata\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xsis.Model\Xsis.Model.csproj">

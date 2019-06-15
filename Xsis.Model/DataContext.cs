@@ -24,7 +24,7 @@ namespace Xsis.Model
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Educational_Level> Educational_Level { get; set; }
         public virtual DbSet<Family_Relation> Family_Relation { get; set; }
-        public virtual DbSet<Family_Tree> Family_Tree { get; set; }
+        public virtual DbSet<Family_Tree_Type> Family_Tree_Type { get; set; }
         public virtual DbSet<Identity_Type> Identity_Type { get; set; }
         public virtual DbSet<Keahlian> Keahlian { get; set; }
         public virtual DbSet<Keluarga> Keluarga { get; set; }

@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>
+                    <h4 class="biru">Keluarga<button type="button" class="btn btn-link" id="idBtnCreateKeluarga"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button></h4>
+                </td>
+            </tr>
+            <tr class="biru">
+                <td>HUBUNGAN</td>
+                <td>NAMA</td>
+                <td>JK</td>
+                <td>TGL. LAHIR</td>
+                <td>PENDIDIKAN</td>
+                <td>PEKEJAAN</td>
+                <td>#</td>
+            </tr>
+        </thead>
+        <tbody id="idTblBodyKeluarga"></tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="idMdlCreateKeluarga" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header  birubg">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h4 class="modal-title">Tambah Keluarga</h4>
+            </div>
+            <div class="modal-body" id="idBodyCreateKeluarga">
+
+
+
+                @*<p>One fine body&hellip;</p>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="idMdlEditKeluarga" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header birubg">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
+                <h4 class="modal-title">Ubah Keluarga</h4>
+            </div>
+            <div class="modal-body" id="idBodyEditKeluarga">
+
+
+
+                @*<p>One fine body&hellip;</p>*@
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+    var vDataFamilyTreeType =
+          { 1: 'Parents', 2: 'Children' };
+    var vDataFamilyRelation =
+          { 1: 'Father', 2: 'Mother', 3: 'Brother/Sister' };
+    var vDataGender =
+          { false: 'Perempuan', true: 'Laki-laki' };
+    var vDataEducationLevel =
+          { 1: 'SD', 2: 'SLTP', 3: 'SLTA', 4: 'Sarjana' };
+
+    $(document).ready(function () {
+
+        var vStrHtml = '';
+
+        $.ajax({
+            url: '/Keluarga/Tampil',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                    debugger;
+                    vStrHtml = vStrHtml + '<tr class="birutext">' +
+                            '<td>' + vDataFamilyRelation[d.family_relation_id] + '</td>' +
+                            '<td>' + d.name + '</td>' +
+                            '<td>' + vDataGender[d.gender] + '</td>' +
+                            '<td>' + d.dob + '</td>' +
+                            '<td>' + vDataEducationLevel[d.education_level_id] + '</td>' +
+                            '<td>' + d.job + '</td>' +
+
+                            //'<td><button type = "button" class="btn btn-primary UbahKeluarga" dataBarang=\'' + JSON.stringify(d) + '\' > + </button></td>' +
+
+                            '<td class="dropdown">' +
+                                '<button class="btn birubg dropdown-toggle" type="button" data-toggle="dropdown">More &nbsp;'+
+                                '<span class="caret"></span>'+
+                                '</button>'+
+                                '<ul class="dropdown-menu">'+
+                                '<li><a class="UbahKeluarga" dataID="'+ d.id +'" href="#">Ubah</a></li>'+
+                                '<li><a class="HapusKeluarga" dataID="' + d.id + '" href="#">Hapus</a></li>' +
+                                '</ul>' +
+                             '</td>' +
+                            '</tr>';
+
+                });
+
+                $('#idTblBodyKeluarga').append(vStrHtml); //memasukan data yg sudah di jahit ke dalam body
+
+                $('.UbahKeluarga').click(function () {
+                    var vDataID = parseInt($(this).attr('dataID'));
+                    debugger;
+
+                    $.ajax({
+                        url: '/Keluarga/Edit',
+                        data: { ID: vDataID },
+                        method: 'Post',
+                        success: function (mdl) {
+                            $('#idBodyEditKeluarga').empty();
+                            $('#idBodyEditKeluarga').append(mdl);
+                            $('#idget').val(vDataID); //memasukan nilai vDataID ke dalam idget pada partial view _Edit
+                            $('#idMdlEditKeluarga').modal('show');
+                            debugger;
+                        },
+                        error: function (mdl) {
+                            debugger;
+                        }
+                    });
+
+                });
+
+                $('.HapusKeluarga').click(function () {
+                    var vDataID = parseInt($(this).attr('dataID'));
+                    debugger;
+                    var r = confirm("Anda Yakin Ingin Menghapus Data ??");
+                    if (r == true) {
+                        $.ajax({
+                            url: '/Keluarga/Delete',
+                            data: { ID: vDataID },
+                            method: 'Post',
+                            success: function (mdl) {
+                                alert('Berhasil Menghapus Data');
+                                location.reload();
+                                debugger;
+                            },
+                            error: function (mdl) {
+                                debugger;
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#idBtnCreateKeluarga').click(function () {
+            $.ajax({
+                url: '/Keluarga/Create',
+                method: 'Get',
+                success: function (mdl) {
+                    debugger;
+                    $('#idBodyCreateKeluarga').empty();
+                    $('#idBodyCreateKeluarga').append(mdl);
+
+                    $('#idMdlCreateKeluarga').modal('show');
+
+                    debugger;
+                },
+                error: function (mdl) {
+                    debugger;
+                }
+            });
+
+        });
+
+    });
+</script>

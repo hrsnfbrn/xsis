@@ -58,7 +58,7 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="Educational_Level.cs" />
     <Compile Include="Family_Relation.cs" />
-    <Compile Include="Family_Tree.cs" />
+    <Compile Include="Family_Tree_Type.cs" />
     <Compile Include="Identity_Type.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="Keahlian.cs" />

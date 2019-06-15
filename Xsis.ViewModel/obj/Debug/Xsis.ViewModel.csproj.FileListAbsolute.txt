@@ -28,3 +28,13 @@ C:\Users\ASUS\Desktop\MiniProject\ngxsis\Xsis.ViewModel\bin\Debug\EntityFramewor
 C:\Users\ASUS\Desktop\MiniProject\ngxsis\Xsis.ViewModel\obj\Debug\Xsis.ViewModel.csprojResolveAssemblyReference.cache
 C:\Users\ASUS\Desktop\MiniProject\ngxsis\Xsis.ViewModel\obj\Debug\Xsis.ViewModel.dll
 C:\Users\ASUS\Desktop\MiniProject\ngxsis\Xsis.ViewModel\obj\Debug\Xsis.ViewModel.pdb
+D:\Xsis\ngxsis\Xsis.ViewModel\bin\Debug\Xsis.ViewModel.dll.config
+D:\Xsis\ngxsis\Xsis.ViewModel\bin\Debug\Xsis.ViewModel.dll
+D:\Xsis\ngxsis\Xsis.ViewModel\bin\Debug\Xsis.ViewModel.pdb
+D:\Xsis\ngxsis\Xsis.ViewModel\bin\Debug\EntityFramework.dll
+D:\Xsis\ngxsis\Xsis.ViewModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Xsis\ngxsis\Xsis.ViewModel\bin\Debug\EntityFramework.xml
+D:\Xsis\ngxsis\Xsis.ViewModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Xsis\ngxsis\Xsis.ViewModel\obj\Debug\Xsis.ViewModel.csprojResolveAssemblyReference.cache
+D:\Xsis\ngxsis\Xsis.ViewModel\obj\Debug\Xsis.ViewModel.dll
+D:\Xsis\ngxsis\Xsis.ViewModel\obj\Debug\Xsis.ViewModel.pdb

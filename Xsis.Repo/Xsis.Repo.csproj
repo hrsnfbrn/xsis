@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BiodataRepo.cs" />
     <Compile Include="KeahlianRepo.cs" />
+    <Compile Include="KeluargaRepo.cs" />
     <Compile Include="PekerjaanRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

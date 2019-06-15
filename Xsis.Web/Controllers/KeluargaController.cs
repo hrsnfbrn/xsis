@@ -8,30 +8,32 @@ using Xsis.Repo;
 
 namespace Xsis.Web.Controllers
 {
-    public class KeahlianController : Controller
+    public class KeluargaController : Controller
     {
-        // GET: Keahlian
+        // GET: Keluarga
         public ActionResult Index()
         {
             return View();
         }
         public ActionResult Tampil()
         {
-            return Json(KeahlianRepo.GetAll(), JsonRequestBehavior.AllowGet);
+            return Json(KeluargaRepo.GetAll(), JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult Select()
         {
-            return Json(KeahlianRepo.GetSelect(), JsonRequestBehavior.AllowGet);
+            return Json(KeluargaRepo.GetSelect(), JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult Create()
         {
             return PartialView("_Create");
         }
 
-        public ActionResult Save(Keahlian keahlian)
+        public ActionResult Save(Keluarga keluarga)
         {
-            keahlian.created_by = Convert.ToInt64(Session["foo"]);
-            if (KeahlianRepo.Createkeahlian(keahlian))
+            keluarga.created_by = Convert.ToInt64(Session["foo"]);
+            if (KeluargaRepo.Createkeluarga(keluarga))
             {
                 return Json(new { Simpan = "Berhasil" }, JsonRequestBehavior.AllowGet);
             }
@@ -48,13 +50,13 @@ namespace Xsis.Web.Controllers
 
         public ActionResult AmbilData(int ID)
         {
-            return Json(KeahlianRepo.GetByID(ID), JsonRequestBehavior.AllowGet);
+            return Json(KeluargaRepo.GetByID(ID), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Delete(int ID, Keahlian keahlianmdl)
+        public ActionResult Delete(int ID, Keluarga keluargamdl)
         {
-            keahlianmdl.deleted_by = Convert.ToInt64(Session["foo"]);
-            if (KeahlianRepo.Deletekeahlian(ID,keahlianmdl)) //non static if ( KeahlianRepo.Deletekeahlian(ID))
+            keluargamdl.deleted_by = Convert.ToInt64(Session["foo"]);
+            if (KeluargaRepo.Deletekeluarga(ID, keluargamdl)) //non static if ( KeluargaRepo.Deletekeluarga(ID))
             {
                 return Json(new { Hapus = "Berhasil" }, JsonRequestBehavior.AllowGet);
             }
@@ -64,10 +66,10 @@ namespace Xsis.Web.Controllers
             }
         }
 
-        public ActionResult EditSimpan(Keahlian keahlian)
+        public ActionResult EditSimpan(Keluarga keluarga)
         {
-            keahlian.modified_by = Convert.ToInt64(Session["foo"]);
-            if (KeahlianRepo.Editkeahlian(keahlian))
+            keluarga.modified_by = Convert.ToInt64(Session["foo"]);
+            if (KeluargaRepo.Editkeluarga(keluarga))
             {
                 return Json(new { EditSimpan = "Berhasil" }, JsonRequestBehavior.AllowGet); //return json digunakan untuk memunculkan alert
             }

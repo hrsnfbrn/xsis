@@ -28,3 +28,13 @@ D:\Bootcamp-196\HOME\ngxsis\Xsis.Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\Bootcamp-196\HOME\ngxsis\Xsis.Model\obj\Debug\Xsis.Model.csprojResolveAssemblyReference.cache
 D:\Bootcamp-196\HOME\ngxsis\Xsis.Model\obj\Debug\Xsis.Model.dll
 D:\Bootcamp-196\HOME\ngxsis\Xsis.Model\obj\Debug\Xsis.Model.pdb
+D:\Xsis\ngxsis\Xsis.Model\bin\Debug\Xsis.Model.dll.config
+D:\Xsis\ngxsis\Xsis.Model\bin\Debug\Xsis.Model.dll
+D:\Xsis\ngxsis\Xsis.Model\bin\Debug\Xsis.Model.pdb
+D:\Xsis\ngxsis\Xsis.Model\bin\Debug\EntityFramework.dll
+D:\Xsis\ngxsis\Xsis.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Xsis\ngxsis\Xsis.Model\bin\Debug\EntityFramework.xml
+D:\Xsis\ngxsis\Xsis.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Xsis\ngxsis\Xsis.Model\obj\Debug\Xsis.Model.csprojResolveAssemblyReference.cache
+D:\Xsis\ngxsis\Xsis.Model\obj\Debug\Xsis.Model.dll
+D:\Xsis\ngxsis\Xsis.Model\obj\Debug\Xsis.Model.pdb

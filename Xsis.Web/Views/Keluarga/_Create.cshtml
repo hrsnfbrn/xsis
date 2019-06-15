@@ -1,0 +1,103 @@
+﻿<form action="" method="post" id="idFrmSubmitKeluarga">
+    <table class="table">
+        <tr>
+            <td colspan="2">
+                <label>Jenis Susunan Keluarga *</label>
+                <select class="form-control" name="family_tree_type_id" id="idFamilyTreeType">
+                    <option value="">-Pilih-</option>
+                    <option value="1">Parents</option>
+                    <option value="2">Children</option>
+                </select>
+            </td>
+            <td colspan="2">
+                <label>Hubungan Keluarga *</label>
+                <select class="form-control" name="family_relation_id" id="idFamilyRelation">
+                    <option value="">-Pilih-</option>
+                    <option value="1">Father</option>
+                    <option value="2">Mother</option>
+                    <option value="3">Brother/Sister</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label>Nama *</label>
+                <input type="text" name="name" class="form-control" id="idName">
+            </td>
+            <td colspan="1">
+                <label>Jenis Kelamin</label>
+                <select class="form-control" name="gender" id="idGender">
+                    <option value="">-Pilih-</option>
+                    <option value="false">Perempuan</option>
+                    <option value="true">Laki-laki</option>
+                </select>
+            </td>
+            <td colspan="1">
+                <label>Tgl. Lahir</label>
+                <input type="text" name="dob" class="form-control" id="idDob">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label colspan="2">Pendidikan</label>
+                <select class="form-control" name="education_level_id" id="idEducationLevel">
+                    <option value="">-Pilih-</option>
+                    <option value="1">SD</option>
+                    <option value="2">SLTP</option>
+                    <option value="3">SLTA</option>
+                    <option value="4">Sarjana</option>
+                </select>
+            </td>
+            <td colspan="2">
+                <label colspan="2">Pekerjaan</label>
+                <input type="text" name="job" class="form-control" id="idJob">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <label>Catatan</label>
+                <textarea class="form-control" id="idNotes" name="notes" rows="3"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="right">
+                <button type="button" class="btn orenwoy" id="idBtnCancelKeluarga">Cancel</button>
+                <button type="button" class="btn biruwoy" id="idBtnSubmitKeluarga">Submit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<script>
+
+    $("#idDob").datepicker({ //datepicker
+        dateFormat: "yy-mm-dd"
+    });
+
+    $('#idBtnCancelKeluarga').click(function () {
+        $('#idMdlCreateKeluarga').close;
+        location.reload();
+    });
+
+    $('#idBtnSubmitKeluarga').click(function () {
+        debugger;
+        var vDatakeluarga = $('#idFrmSubmitKeluarga').serialize();
+        $.ajax({
+            url: '/Keluarga/Save',
+            data: vDatakeluarga,
+            method: 'Post',
+            success: function (mdl) {
+                debugger;
+                if (mdl.Simpan == "Berhasil") {
+                    alert("Data berhasil disimpan");
+                    $('#idMdlCreateKeluarga').close;
+                    location.reload();
+
+                }
+                else {
+                    debugger;
+                    alert("Data gagal disimpan");
+                }
+            }
+        });
+    });
+</script>
