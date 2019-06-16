@@ -90,11 +90,18 @@
                 debugger;
                 $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
                     debugger;
+                    vConvert = new Date(d.dob.substr(6, 12) - 0).toString();
+                    var bulan = (vConvert.toString()).substr(4, 3);
+                    var tanggal = (vConvert.toString()).substr(8, 2);
+                    var tahun = (vConvert.toString()).substr(11, 4);
+                    var vDataDob= tanggal +'-'+bulan +'-'+tahun;
+                   
+
                     vStrHtml = vStrHtml + '<tr class="birutext">' +
                             '<td>' + vDataFamilyRelation[d.family_relation_id] + '</td>' +
                             '<td>' + d.name + '</td>' +
                             '<td>' + vDataGender[d.gender] + '</td>' +
-                            '<td>' + d.dob + '</td>' +
+                            '<td>' + vDataDob + '</td>' +
                             '<td>' + vDataEducationLevel[d.education_level_id] + '</td>' +
                             '<td>' + d.job + '</td>' +
 

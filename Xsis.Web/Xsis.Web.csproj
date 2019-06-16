@@ -140,6 +140,7 @@
     <Compile Include="Controllers\KeahlianController.cs" />
     <Compile Include="Controllers\KeluargaController.cs" />
     <Compile Include="Controllers\PekerjaanController.cs" />
+    <Compile Include="Controllers\SelectAccessController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,6 +164,8 @@
     <Content Include="Views\Keluarga\Index.cshtml" />
     <Content Include="Views\Keluarga\_Create.cshtml" />
     <Content Include="Views\Keluarga\_Edit.cshtml" />
+    <Content Include="Views\Biodata\Index.cshtml" />
+    <Content Include="Views\SelectAccess\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -173,7 +176,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Biodata\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xsis.Model\Xsis.Model.csproj">

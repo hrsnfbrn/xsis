@@ -3,21 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Xsis.Repo;
 
 namespace Xsis.Web.Controllers
 {
-    public class PekerjaanController : Controller
+    public class SelectAccessController : Controller
     {
-        // GET: Pekerjaan
+        // GET: SelectAccess
         public ActionResult Index()
         {
             return View();
-        }
-
-        public ActionResult Create()
-        {
-            return PartialView("_Create");
         }
     }
 }
