@@ -54,6 +54,7 @@
     <Compile Include="KeluargaRepo.cs" />
     <Compile Include="PekerjaanRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelecAccessRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

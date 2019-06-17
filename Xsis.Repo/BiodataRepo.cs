@@ -106,7 +106,6 @@ namespace Xsis.Repo
                     dep.how_many_brothers = biodata.how_many_brothers;
                     dep.marital_status_id = biodata.marital_status_id;
                     dep.mariage_year = biodata.mariage_year;
-                    dep.addrbook_id = biodata.addrbook_id;
                     db.Entry(dep).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }

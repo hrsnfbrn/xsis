@@ -1,0 +1,300 @@
+﻿
+<form action="" method="post" id="idFrmEditBiodata">
+    <table class="table" style="font-size:12px;">
+        <tr>
+            <td colspan="12">
+                <input type="hidden" name="id" id="idget" />
+                <label>Nama Lengkap *</label>
+                <input type="text" name="fullname" class="form-control" id="idFullname">
+                </td>
+            <td colspan="12">
+                <label>Nama Panggilan *</label>
+                <input type="text" name="nick_name" class="form-control" id="idNickName">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <label>Tempat Lahir *</label>
+                <input type="text" name="pob" class="form-control" id="idPob">
+            </td>
+            <td colspan="6">
+                <label>Tgl. Lahir (yyyy-mm-yy)</label>
+                <input type="text" name="dob" class="form-control" id="idDob">
+            </td>
+            <td colspan="6">
+                <label>Jenis Kelamin</label>
+                <select class="form-control" name="gender" id="idGender">
+                    <option value="">-Pilih-</option>
+                    <option value=0>Perempuan</option>
+                    <option value=1>Laki-laki</option>
+                </select>
+            </td>
+            <td colspan="6">
+                <label>Agama</label>
+                <select class="form-control" name="religion_id" id="idReligion">
+                    <option value="">-Pilih-</option>
+                    <option value="1">Islam</option>
+                    <option value="2">Kristen</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <label>Tinggi (cm) *</label>
+                <input type="text" name="high" class="form-control" id="idHigh">
+            </td>
+            <td colspan="6">
+                <label>Berat (kg) *</label>
+                <input type="text" name="weight" class="form-control" id="idWeight">
+            </td>
+            <td colspan="6">
+                <label>Kewarganegaraan *</label>
+                <input type="text" name="nationality" class="form-control" id="idNationality">
+            </td>
+            <td colspan="6">
+                <label>Suku Bangsa</label>
+                <input type="text" name="ethnic" class="form-control" id="idEthnic">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="12">
+                <label>Kegemaran / Hobi *</label>
+                <input type="text" name="hobby" class="form-control" id="idHobby">
+            </td>
+            <td colspan="6">
+                <label>Jenis Identitas *</label>
+                <select class="form-control" name="identity_type_id" id="idIdentityType">
+                    <option value="">-Pilih-</option>
+                    <option value="1">KTP</option>
+                    <option value="2">SIM</option>
+                </select>
+            </td>
+            <td colspan="6">
+                <label>Nomor Identitas *</label>
+                <input type="text" name="identity_no" class="form-control" id="idIdentityNo">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <label>Email *</label>
+                <input type="text" name="email" class="form-control" id="idEmail">
+            </td>
+            <td colspan="6">
+                <label>No. HP</label>
+                <input type="text" name="phone_number1" class="form-control" id="idPhoneNumber1">
+            </td>
+            <td colspan="6">
+                <label>No. HP Alternatif</label>
+                <input type="text" name="phone_number2" class="form-control" id="idPhoneNumber2">
+            </td>
+            <td colspan="6">
+                <label> No. Tlp (Orang Tua) *</label>
+                <input type="text" name="parent_phone_number" class="form-control" id="idParentPhoneNumber">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <label>Anak Ke *</label>
+                <input type="text" name="child_sequence" class="form-control" id="idChildSequence">
+            </td>
+            <td colspan="6">
+                <label>Dari Berapa Bersaudara *</label>
+                <input type="text" name="how_many_brothers" class="form-control" id="idHowManyBrothers">
+            </td>
+            <td colspan="6">
+                <label>Status Pernikahan *</label>
+                <select class="form-control" name="marital_status_id" id="idMaritalStatus">
+                    <option value="">-Pilih-</option>
+                    <option value="1">Menikah</option>
+                    <option value="2">Single</option>
+                </select>
+            </td>
+            <td colspan="6">
+                <label>Tahun Pernikahan *</label>
+                <select class="form-control" name="mariage_year" id="idMariageYear">
+                    <option>-Pilih-</option>
+                    <option>1990</option>
+                    <option>1991</option>
+                    <option>1992</option>
+                    <option>1993</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="12">
+                <label style="font-size:15px;"><u><b>Alamat Sesuai Kartu Identitas</b></u></label> 
+            </td>
+            <td colspan="12">
+                <label style="font-size:15px;"><u><b>Alamat Sesuai Tempat Tinggal Saat Ini</b></u></label> 
+            </td>
+        </tr>
+        <tr>
+            <td colspan="12">
+                <label>Alamat *</label>
+                <input type="text" name="address1" class="form-control" id="idAddress1">
+            </td>
+            <td colspan="12">
+                <label>Alamat *</label>
+                <input type="text" name="address2" class="form-control" id="idAddress2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <label>Kode Pos</label>
+                <input type="text" name="postalcode1" class="form-control" id="idPostalCode1">
+            </td>
+            <td colspan="3">
+                <label>RT *</label>
+                <input type="text" name="rw1" class="form-control" id="idRt1">
+            </td>
+            <td colspan="3">
+                <label>RW *</label>
+                <input type="text" name="rw1" class="form-control" id="idRw1">
+            </td>
+            <td colspan="6">
+                <label>Kode Pos</label>
+                <input type="text" name="postalcode2" class="form-control" id="idPostalCode2">
+            </td>
+            <td colspan="3">
+                <label>RT *</label>
+                <input type="text" name="rw2" class="form-control" id="idRt2">
+            </td>
+            <td colspan="3">
+                <label>RW *</label>
+                <input type="text" name="rw2" class="form-control" id="idRw2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <label>Desa/Kelurahan *</label>
+                <input type="text" name="kelurahan1" class="form-control" id="idKelurahan1">
+            </td>
+            <td colspan="3">
+                <label>Kecamatan *</label>
+                <input type="text" name="kecamatan1" class="form-control" id="idKecamatan1">
+            </td>
+            <td colspan="3">
+                <label>Kota *</label>
+                <input type="text" name="rw1" class="form-control" id="idRegion1">
+            </td>
+            <td colspan="6">
+                <label>Desa/Kelurahan *</label>
+                <input type="text" name="kelurahan2" class="form-control" id="idKelurahan2">
+            </td>
+            <td colspan="3">
+                <label>Kecamatan *</label>
+                <input type="text" name="kecamatan2" class="form-control" id="idKecamatan2">
+            </td>
+            <td colspan="3">
+                <label>Kota *</label>
+                <input type="text" name="rw2" class="form-control" id="idRegion2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="24" align="right">
+                <button type="button" class="btn orenwoy" id="idBtnCancelBiodata">Cancel</button>
+                <button type="button" class="btn biruwoy" id="idBtnUpdateBiodata">Submit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script>
+
+    $(document).ready(function () {
+
+        var vDataAddress1 = "Jl. Mundu 75";
+        var vDataAddress2 = "Jl. Mundu 75";
+        var vDataPostalCode1 = "13810";
+        var vDataRt1 = "01";
+        var vDataRw1 = "04";
+        var vDataPostalCode2 = "13810";
+        var vDataRt2 = "01";
+        var vDataRw2 = "04";
+        var vDataKelurahan1 = "Lubang Buaya";
+        var vDataKecamatan1 = "Cipayung";
+        var vDataRegion1 = "Jakarta";
+        var vDataKelurahan2 = "Lubang Buaya";
+        var vDataKecamatan2 = "Cipayung";
+        var vDataRegion2 = "Jakarta";
+        var vDataGender =
+        { false: 'Perempuan', true: 'Laki-laki' };
+
+        $.ajax({
+            url: '/Biodata/AmbilData',
+            data: { ID: $('#idget').val() },
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $('#idFullname').val(mdl.fullname);
+                $('#idNickName').val(mdl.nick_name);
+                $('#idPob').val(mdl.pob);
+                $('#idDob').val(mdl.dob);
+                $('#idGender').val(vDataGender[mdl.gender]).selected;
+                $('#idReligion').val(mdl.religion_id);
+                $('#idHigh').val(mdl.high);
+                $('#idWeight').val(mdl.weight);
+                $('#idNationality').val(mdl.nationality);
+                $('#idEthnic').val(mdl.ethnic);
+                $('#idHobby').val(mdl.hobby);
+                $('#idIdentityType').val(mdl.identity_type_id).selected;
+                $('#idIdentityNo').val(mdl.identity_no);
+                $('#idEmail').val(mdl.email);
+                $('#idPhoneNumber1').val(mdl.phone_number1);
+                $('#idPhoneNumber2').val(mdl.phone_number2);
+                $('#idParentPhoneNumber').val(mdl.parent_phone_number);
+                $('#idChildSequence').val(mdl.child_sequence);
+                $('#idHowManyBrothers').val(mdl.how_many_brothers);
+                $('#idMaritalStatus').val(mdl.marital_status_id);
+                $('#idMariageYear').val(mdl.mariage_year);
+                $('#idAddress1').val(vDataAddress1);
+                $('#idAddress2').val(vDataAddress1);
+                $('#idPostalCode1').val(vDataPostalCode1);
+                $('#idPostalCode2').val(vDataPostalCode2);
+                $('#idRt1').val(vDataRt1);
+                $('#idRw1').val(vDataRw1);
+                $('#idRt2').val(vDataRt1);
+                $('#idRw2').val(vDataRw2);
+                $('#idKelurahan1').val(vDataKelurahan1);
+                $('#idKecamatan1').val(vDataKecamatan1);
+                $('#idRegion1').val(vDataRegion1);
+                $('#idKelurahan2').val(vDataKelurahan2);
+                $('#idKecamatan2').val(vDataKecamatan2);
+                $('#idRegion2').val(vDataRegion2);
+            }
+        });
+
+        $("#idDob").datepicker({ //datepicker
+            dateFormat: "yy-mm-dd"
+        }).datepicker("setDate", new Date());
+
+        $('#idBtnCancelBiodata').click(function () {
+            $('#idMdlCreateBiodata').close;
+            location.reload();
+        });
+
+        $('#idBtnUpdateBiodata').click(function () {
+            debugger;
+            var vDatabiodata = $('#idFrmEditBiodata').serialize();
+            $.ajax({
+                url: '/Biodata/EditSimpan',
+                data: vDatabiodata,
+                method: 'Post',
+                success: function (mdl) {
+                    if (mdl.EditSimpan == "Berhasil") {
+                        debugger;
+                        alert("Data berhasil diEdit");
+                        $('#idMdlEditBiodata').close;
+                        location.reload();
+
+                    }
+                    else {
+                        debugger;
+                        alert("Data gagal diEdit");
+                    }
+                }
+            });
+        });
+
+    });
+</script>
