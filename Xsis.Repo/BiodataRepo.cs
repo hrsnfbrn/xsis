@@ -45,7 +45,6 @@ namespace Xsis.Repo
             using (DataContext db = new DataContext())
             {
                 biodata = db.Biodata.Where(d => d.id == ID).First();
-                //biodata = db.Biodata.Where(d => d.id == ID).First();
                 return biodata;
             }
         }
@@ -62,7 +61,7 @@ namespace Xsis.Repo
                     dep = db.Biodata.Where(d => d.id == ID).First();
                     dep.is_delete = true;
                     dep.deleted_by = biodatamdl.deleted_by;
-                    dep.deleted_on = DateTime.Now.Date;
+                    dep.deleted_on = DateTime.Now;
                     db.Entry(dep).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -84,7 +83,7 @@ namespace Xsis.Repo
                 {
                     dep = db.Biodata.Where(d => d.id == biodata.id).First();
                     dep.modified_by = biodata.modified_by;
-                    dep.modified_on = DateTime.Now.Date;
+                    dep.modified_on = DateTime.Now;
                     dep.fullname = biodata.fullname;
                     dep.nick_name = biodata.nick_name;
                     dep.pob = biodata.pob;

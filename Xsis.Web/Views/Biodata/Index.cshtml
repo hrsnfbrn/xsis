@@ -65,64 +65,64 @@
             method: 'Get',
             success: function (d) {
                 debugger;
-                    
-                    vConvert = new Date(d.dob.substr(6, 12) - 0).toString();
-                    var bulan = (vConvert.toString()).substr(4, 3);
-                    var tanggal = (vConvert.toString()).substr(8, 2);
-                    var tahun = (vConvert.toString()).substr(11, 4);
-                    var vDataDob = tanggal + ' ' + vDataBulan[bulan] + ' ' + tahun;
 
-                    vStrHtml = vStrHtml +
-                            '<tr class="birutext">' +
-                            '<td>Nama Lengkap</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + d.fullname + '</td>' +
-                            '</tr>' +
-                            '<tr class="birutext">' +
-                            '<td>Nama Panggilan</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + d.nick_name + '</td>' +
-                            '</tr>' +
-                            '<tr class="birutext">' +
-                            '<td>Kontak</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + d.email + ' / ' + d.phone_number1 + '</td>' +
-                            '</tr>' +
-                            '<tr class="birutext">' +
-                            '<td>Tempat, Tgl. Lahir</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + d.pob + ', ' + vDataDob + '</td>' +
-                            '</tr>' +
-                            '<tr class="birutext">' +
-                            '<td>Jenis Kelamin, Tinggi (cm), Berat (kg)</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + vDataGender[d.gender] + ', ' + d.high + ', ' + d.weight + '</td>' +
-                            '</tr>' +
-                            '<tr class="birutext">' +
-                            '<td>Agama</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + vDataReligion[d.religion_id] + '</td>' +
-                            '</tr>'+
-                            '<tr class="birutext">' +
-                            '<td>Kewarganegaraan, Suku Bangsa</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + d.nationality + ', ' + d.ethnic + '</td>' +
-                            '</tr>'+
-                            '<tr class="birutext">' +
-                            '<td>Kegemaran / Hobi</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + d.hobby + '</td>' +
-                            '</tr>'+
-                             '<tr class="birutext">' +
-                            '<td>Jenis & Nomor Identitas</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + vDataIdentityType[d.identity_type_id] + ', ' + d.identity_no + '</td>' +
-                            '</tr>'+
-                            '<tr class="birutext">' +
-                            '<td>Status & Tahun Pernikahan</td>' +
-                            '<td>:</td>' +
-                            '<td input>' + vDataMaritalStatus[d.marital_status_id] + ' - ' + d.mariage_year + '</td>' +
-                            '</tr>';
+                vConvert = new Date(d.dob.substr(6, 12) - 0).toString();
+                var bulan = (vConvert.toString()).substr(4, 3);
+                var tanggal = (vConvert.toString()).substr(8, 2);
+                var tahun = (vConvert.toString()).substr(11, 4);
+                var vDataDob = tanggal + ' ' + vDataBulan[bulan] + ' ' + tahun;
+
+                vStrHtml = vStrHtml +
+                '<tr class="birutext">' +
+                '<td>Nama Lengkap</td>' +
+                '<td>:</td>' +
+                '<td input>' + d.fullname + '</td>' +
+                '</tr>' +
+                '<tr class="birutext">' +
+                '<td>Nama Panggilan</td>' +
+                '<td>:</td>' +
+                '<td input>' + d.nick_name + '</td>' +
+                '</tr>' +
+                '<tr class="birutext">' +
+                '<td>Kontak</td>' +
+                '<td>:</td>' +
+                '<td input>' + d.email + ' / ' + d.phone_number1 + '</td>' +
+                '</tr>' +
+                '<tr class="birutext">' +
+                '<td>Tempat, Tgl. Lahir</td>' +
+                '<td>:</td>' +
+                '<td input>' + d.pob + ', ' + vDataDob + '</td>' +
+                '</tr>' +
+                '<tr class="birutext">' +
+                '<td>Jenis Kelamin, Tinggi (cm), Berat (kg)</td>' +
+                '<td>:</td>' +
+                '<td input>' + vDataGender[d.gender] + ', ' + d.high + ', ' + d.weight + '</td>' +
+                '</tr>' +
+                '<tr class="birutext">' +
+                '<td>Agama</td>' +
+                '<td>:</td>' +
+                '<td input>' + vDataReligion[d.religion_id] + '</td>' +
+                '</tr>'+
+                '<tr class="birutext">' +
+                '<td>Kewarganegaraan, Suku Bangsa</td>' +
+                '<td>:</td>' +
+                '<td input>' + d.nationality + ', ' + d.ethnic + '</td>' +
+                '</tr>'+
+                '<tr class="birutext">' +
+                '<td>Kegemaran / Hobi</td>' +
+                '<td>:</td>' +
+                '<td input>' + d.hobby + '</td>' +
+                '</tr>'+
+                 '<tr class="birutext">' +
+                '<td>Jenis & Nomor Identitas</td>' +
+                '<td>:</td>' +
+                '<td input>' + vDataIdentityType[d.identity_type_id] + ', ' + d.identity_no + '</td>' +
+                '</tr>'+
+                '<tr class="birutext">' +
+                '<td>Status & Tahun Pernikahan</td>' +
+                '<td>:</td>' +
+                '<td input>' + vDataMaritalStatus[d.marital_status_id] + ' - ' + d.mariage_year + '</td>' +
+                '</tr>';
 
                 $('#idTblBodyBiodata').append(vStrHtml);
             }

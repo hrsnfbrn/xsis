@@ -19,18 +19,15 @@ namespace Xsis.Model
         [Required(AllowEmptyStrings = false)]
         public long created_by { get; set; }
 
-        [Column(TypeName = "Date")]
         [Required(AllowEmptyStrings = false)]
         public DateTime created_on { get; set; }
 
         public Nullable<long> modified_by { get; set; }
 
-        [Column(TypeName = "Date")]
         public Nullable<DateTime> modified_on { get; set; }
 
         public Nullable<long> deleted_by { get; set; }
 
-        [Column(TypeName = "Date")]
         public Nullable<DateTime> deleted_on { get; set; }
 
         public Boolean is_delete { get; set; }
@@ -55,7 +52,7 @@ namespace Xsis.Model
         [StringLength(100)]
         public string job { get; set; }
 
-        public Nullable<long> education_level_id { get; set; }
+        public Nullable<long> educational_level_id { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(1000)]

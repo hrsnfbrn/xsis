@@ -1,0 +1,70 @@
+﻿
+<table class="table-responsive">
+    <tr>
+        <td>
+            <input type="hidden" name="id" id="idget" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class="glyphicon glyphicon-trash" style="font-size:70px;"></span>
+        </td>
+        <td align="center">
+            <label class="merahtext" style="font-size:17px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;Anda yakin ingin menghapus keluarga <br />
+                <input type="text" readonly style="border:0px; width:400px; text-align:center; font-size:20px;" id="idLblNamaKeluarga" />
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br />
+        </td>
+    </tr>
+    <tr>
+        <td align="right" colspan="3">
+            <button type="button" class="btn orenwoy" id="idBtnCancelKeluarga">Tidak</button>
+            <button type="button" class="btn merahwoy" id="idBtnHapusKeluarga">&nbsp;&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;</button>
+        </td>
+    </tr>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Keluarga/AmbilData',
+            data: { ID: $('#idget').val() },
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $('#idLblNamaKeluarga').val(mdl.name + ' ?');
+            }
+        });
+    });
+
+    $('#idBtnCancelKeluarga').click(function () {
+        $('#idMdlHapusKeluarga').close;
+        location.reload();
+    });
+
+    $('#idBtnHapusKeluarga').click(function () {
+        var vDataID = $('#idget').val();
+        debugger;
+        //var r = confirm("Anda Yakin Ingin Menghapus Data ??");
+        //if (r == true) {
+            $.ajax({
+                url: '/Keluarga/Delete',
+                data: { ID: vDataID },
+                method: 'Post',
+                success: function (mdl) {
+                    alert('Berhasil Menghapus Data');
+                    location.reload();
+                    debugger;
+                },
+                error: function (mdl) {
+                    debugger;
+                }
+            });
+        //}
+    });
+</script>

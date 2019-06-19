@@ -19,10 +19,19 @@ namespace Xsis.Web.Controllers
         {
             return Json(KeluargaRepo.GetAll(), JsonRequestBehavior.AllowGet);
         }
-
-        public ActionResult Select()
+        public ActionResult SelectFamilyTreeType()
         {
-            return Json(KeluargaRepo.GetSelect(), JsonRequestBehavior.AllowGet);
+            return Json(KeluargaRepo.GetSelectFamilyTreeType(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SelectFamilyRelation()
+        {
+            return Json(KeluargaRepo.GetSelectFamilyRelation(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SelectEducationalLevel()
+        {
+            return Json(KeluargaRepo.GetSelectEducationalLevel(), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()
@@ -51,6 +60,11 @@ namespace Xsis.Web.Controllers
         public ActionResult AmbilData(int ID)
         {
             return Json(KeluargaRepo.GetByID(ID), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteCfr(int ID)
+        {
+            return PartialView("_Delete");
         }
 
         public ActionResult Delete(int ID, Keluarga keluargamdl)

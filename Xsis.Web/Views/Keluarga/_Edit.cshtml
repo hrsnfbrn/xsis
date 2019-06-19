@@ -4,30 +4,30 @@
             <td colspan="2">
                 <input type="hidden" name="id" id="idget" />
                 <label>Jenis Susunan Keluarga *</label>
-                <select class="form-control" name="family_tree_type_id" id="idFamilyTreeType">
-                    <option value="">-Pilih-</option>
+                <select class="form-control" name="family_tree_type_id" style="border:2px solid blue;" id="idFamilyTreeType">
+                    @*<option value="">-Pilih-</option>
                     <option value="1">Parents</option>
-                    <option value="2">Children</option>
+                    <option value="2">Children</option>*@
                 </select>
             </td>
             <td colspan="2">
                 <label>Hubungan Keluarga *</label>
-                <select class="form-control" name="family_relation_id" id="idFamilyRelation">
-                    <option value="">-Pilih-</option>
+                <select class="form-control" name="family_relation_id" style="border:2px solid blue;" id="idFamilyRelation">
+                    @*<option value="">-Pilih-</option>
                     <option value="1">Father</option>
                     <option value="2">Mother</option>
-                    <option value="3">Brother/Sister</option>
+                    <option value="3">Brother/Sister</option>*@
                 </select>
             </td>
         </tr>
         <tr>
             <td colspan="2">
                 <label>Nama *</label>
-                <input type="text" name="name" class="form-control" id="idName">
+                <input type="text" name="name" class="form-control" style="border:2px solid blue;" id="idName">
             </td>
             <td colspan="1">
                 <label>Jenis Kelamin</label>
-                <select class="form-control" name="gender" id="idGender">
+                <select class="form-control" name="gender" style="border:2px solid blue;" id="idGender">
                     <option value="">-Pilih-</option>
                     <option value="0">Perempuan</option>
                     <option value="1">Laki-laki</option>
@@ -35,13 +35,13 @@
             </td>
             <td colspan="1">
                 <label>Tgl. Lahir</label>
-                <input type="text" name="dob" class="form-control" id="idDob">
+                <input type="text" name="dob" class="form-control" style="border:2px solid blue;" id="idDob">
             </td>
         </tr>
         <tr>
             <td colspan="2">
                 <label colspan="2">Pendidikan</label>
-                <select class="form-control" name="education_level_id" id="idEducationLevel">
+                <select class="form-control" name="education_level_id" style="border:2px solid blue;" id="idEducationLevel">
                     <option value="">-Pilih-</option>
                     <option value="1">SD</option>
                     <option value="2">SLTP</option>
@@ -51,13 +51,13 @@
             </td>
             <td colspan="2">
                 <label colspan="2">Pekerjaan</label>
-                <input type="text" name="job" class="form-control" id="idJob">
+                <input type="text" name="job" class="form-control" style="border:2px solid blue;" id="idJob">
             </td>
         </tr>
         <tr>
             <td colspan="4">
                 <label>Catatan</label>
-                <textarea class="form-control" id="idNotes" name="notes" rows="3"></textarea>
+                <textarea class="form-control" id="idNotes" style="border:2px solid blue;" name="notes" rows="3"></textarea>
             </td>
         </tr>
         <tr>
@@ -71,6 +71,39 @@
 
 <script>
     $(document).ready(function () {
+        var vSelectFamilyTreeType = '';
+        var vSelectFamilyRelation="";
+
+        $.ajax({
+            url: '/Keluarga/SelectFamilyTreeType',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                    vSelectFamilyTreeType = vSelectFamilyTreeType +
+                        '<option value="' + d.family_tree_type_id + '">' +
+                            d.name +
+                            '</option>';
+                });
+                $('#idFamilyTreeType').append(vSelectFamilyTreeType); //memasukan data yg sudah di jahit ke dalam body
+            }
+        });
+
+        $.ajax({
+            url: '/Keluarga/SelectFamilyRelation',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                    vSelectFamilyRelation = vSelectFamilyRelation +
+                        '<option value="' + d.family_relation_id + '">' +
+                            d.name +
+                            '</option>';
+                });
+                $('#idFamilyRelation').append(vSelectFamilyRelation); //memasukan data yg sudah di jahit ke dalam body
+            }
+        });
+
         $.ajax({
             url: '/Keluarga/AmbilData',
             data: { ID: $('#idget').val() },
@@ -88,9 +121,11 @@
             }
         });
 
-        $("#idDob").datepicker({ //datepicker
-            dateFormat: "yy-mm-dd"
-        }).datepicker("setDate", new Date());
+        $('.ClBtnCloseKeluarga').click(function () {
+            debugger;
+            $('#idMdlEditKeluarga').close;
+            location.reload();
+        });
 
         $('#idBtnCancelKeluarga').click(function () {
             $('#idMdlCreateKeluarga').close;
@@ -99,26 +134,41 @@
 
         $('#idBtnEditKeluarga').click(function () {
             debugger;
-            var vDatakeluarga = $('#idFrmEditKeluarga').serialize();
-            $.ajax({
-                url: '/Keluarga/EditSimpan',
-                data: vDatakeluarga,
-                method: 'Post',
-                success: function (mdl) {
-                    if (mdl.EditSimpan == "Berhasil") {
-                        debugger;
-                        alert("Data berhasil diEdit");
-                        $('#idMdlEditKeluarga').close;
-                        location.reload();
+            var skill = $('#idJenisSusunanKeluarga').val();
 
+            if (skill == "") {
+                alert('Level Keahlian Tidak Boleh Kosong');
+                $('#idSkillLevel').focus();
+            }
+            else {
+                var vDatakeahlian = $('#idFrmEditKeahlian').serialize();
+                $.ajax({
+                    url: '/Keahlian/EditSimpan',
+                    data: vDatakeahlian,
+                    method: 'Post',
+                    success: function (mdl) {
+                        if (mdl.EditSimpan == "Berhasil") {
+                            debugger;
+                            alert("Data berhasil diEdit");
+                            //$('.modal').modal('hide');
+                            //$.modal.close();
+                            $('#idMdlEditKeahlian').close;
+                            location.reload();
+
+                        }
+                        else {
+                            debugger;
+                            alert("Data gagal diEdit");
+                        }
                     }
-                    else {
-                        debugger;
-                        alert("Data gagal diEdit");
-                    }
-                }
-            });
+                });
+            }
         });
+
+
+        $("#idDob").datepicker({ //datepicker
+            dateFormat: "yy-mm-dd"
+        }).datepicker("setDate", new Date());
 
     });
 </script>

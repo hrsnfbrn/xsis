@@ -25,12 +25,10 @@ namespace Xsis.Model
 
         public Nullable<long> modified_by { get; set; }
 
-        [Column(TypeName = "Date")]
         public Nullable<DateTime> modified_on { get; set; }
 
         public Nullable<long> deleted_by { get; set; }
 
-        [Column(TypeName = "Date")]
         public Nullable<DateTime> deleted_on { get; set; }
 
         public Boolean is_delete { get; set; }
