@@ -1,69 +1,104 @@
-﻿<form action="" method="post" id="idFrmEditKeluarga">
+﻿<style type="text/css">
+    [data-validation-message] {
+        display: none;
+        color: red;
+        font-weight: bold;
+    }
+
+        [data-validation-message].message-visible {
+            display: block;
+        }
+
+    .blueborder {
+        border-color: blue;
+    }
+
+        .blueborder.invalid {
+            border-color: red;
+        }
+</style>
+
+<form action="" method="post" id="idFrmEditKeluarga">
     <table class="table">
         <tr>
             <td colspan="2">
-                <input type="hidden" name="id" id="idget" />
                 <label>Jenis Susunan Keluarga *</label>
-                <select class="form-control" name="family_tree_type_id" style="border:2px solid blue;" id="idFamilyTreeType">
-                    @*<option value="">-Pilih-</option>
-                    <option value="1">Parents</option>
-                    <option value="2">Children</option>*@
+                <input type="hidden" name="id" id="idget" />
+                <select name="family_tree_type_id" class="form-control blueborder" data-validate="required" id="idFamilyTreeType">
+                    <option value="">-Pilih-</option>
+                    @*<option value="1">Inti</option>
+                    <option value="2">Utama</option>*@
                 </select>
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Jenis Susunan Keluarga Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="2">
                 <label>Hubungan Keluarga *</label>
-                <select class="form-control" name="family_relation_id" style="border:2px solid blue;" id="idFamilyRelation">
-                    @*<option value="">-Pilih-</option>
-                    <option value="1">Father</option>
-                    <option value="2">Mother</option>
-                    <option value="3">Brother/Sister</option>*@
+                <select class="form-control blueborder" data-validate="required" name="family_relation_id" id="idFamilyRelation">
+                    <option value="">-Pilih-</option>
+                    @*<option value="1">Bapak</option>
+                    <option value="2">Ibu</option>
+                    <option value="3">Anak</option>*@
                 </select>
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Hubungan Keluarga Tidak Boleh Kosong.
+                </small>
             </td>
         </tr>
         <tr>
             <td colspan="2">
                 <label>Nama *</label>
-                <input type="text" name="name" class="form-control" style="border:2px solid blue;" id="idName">
+                <input type="text" name="name" class="form-control blueborder" data-validate="required" id="idName">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Nama Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="1">
                 <label>Jenis Kelamin</label>
-                <select class="form-control" name="gender" style="border:2px solid blue;" id="idGender">
+                <select class="form-control blueborder" name="gender" id="idGender">
                     <option value="">-Pilih-</option>
-                    <option value="0">Perempuan</option>
-                    <option value="1">Laki-laki</option>
+                    <option value=0>Perempuan</option>
+                    <option value=1>Laki-laki</option>
                 </select>
             </td>
             <td colspan="1">
                 <label>Tgl. Lahir</label>
-                <input type="text" name="dob" class="form-control" style="border:2px solid blue;" id="idDob">
+                <input type="text" name="dob" class="form-control blueborder" id="idDob">
             </td>
         </tr>
         <tr>
             <td colspan="2">
                 <label colspan="2">Pendidikan</label>
-                <select class="form-control" name="education_level_id" style="border:2px solid blue;" id="idEducationLevel">
+                <select class="form-control blueborder" name="educational_level_id" id="idEducationalLevel">
                     <option value="">-Pilih-</option>
-                    <option value="1">SD</option>
+                    @*<option value="1">SD</option>
                     <option value="2">SLTP</option>
                     <option value="3">SLTA</option>
-                    <option value="4">Sarjana</option>
+                    <option value="4">Sarjana</option>*@
                 </select>
             </td>
             <td colspan="2">
                 <label colspan="2">Pekerjaan</label>
-                <input type="text" name="job" class="form-control" style="border:2px solid blue;" id="idJob">
+                <input type="text" name="job" class="form-control blueborder" id="idJob">
             </td>
         </tr>
         <tr>
             <td colspan="4">
                 <label>Catatan</label>
-                <textarea class="form-control" id="idNotes" style="border:2px solid blue;" name="notes" rows="3"></textarea>
+                <textarea class="form-control blueborder" id="idNotes" name="notes" rows="3"></textarea>
             </td>
         </tr>
         <tr>
             <td colspan="4" align="right">
-                <button type="button" class="btn orenwoy" id="idBtnCancelKeluarga">Cancel</button>
-                <button type="button" class="btn biruwoy" id="idBtnEditKeluarga">Submit</button>
+                <button type="button" class="btn orenwoy" id="idBtnCancelKeluarga">Batal</button>
+                <button type="submit" class="btn biruwoy" id="idBtnEditKeluarga">Simpan</button>
             </td>
         </tr>
     </table>
@@ -72,16 +107,16 @@
 <script>
     $(document).ready(function () {
         var vSelectFamilyTreeType = '';
-        var vSelectFamilyRelation="";
 
         $.ajax({
             url: '/Keluarga/SelectFamilyTreeType',
             method: 'Get',
             success: function (mdl) {
                 debugger;
+                $('#idFamilyTreeType').empty();
                 $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
                     vSelectFamilyTreeType = vSelectFamilyTreeType +
-                        '<option value="' + d.family_tree_type_id + '">' +
+                        '<option value="' + d.id + '">' +
                             d.name +
                             '</option>';
                 });
@@ -89,19 +124,45 @@
             }
         });
 
+            var vSelectFamilyRelation = "";
+            $.ajax({
+                url: '/Keluarga/SelectFamilyRelation',
+                method: 'Get',
+                success: function (mdl) {
+                    debugger;
+                    $('#idFamilyRelation').empty();
+                    $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                        vSelectFamilyRelation = vSelectFamilyRelation +
+                            '<option value="' + d.id + '">' +
+                                d.name +
+                                '</option>';
+                    });
+                    $('#idFamilyRelation').append(vSelectFamilyRelation); //memasukan data yg sudah di jahit ke dalam body
+                }
+            });
+
+        var vSelectEducationalLevel = "";
         $.ajax({
-            url: '/Keluarga/SelectFamilyRelation',
+            url: '/Keluarga/SelectEducationalLevel',
             method: 'Get',
             success: function (mdl) {
                 debugger;
+                $('#idEducationalLevel').empty();
                 $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
-                    vSelectFamilyRelation = vSelectFamilyRelation +
-                        '<option value="' + d.family_relation_id + '">' +
+                    vSelectEducationalLevel = vSelectEducationalLevel +
+                        '<option value="' + d.id + '">' +
                             d.name +
                             '</option>';
                 });
-                $('#idFamilyRelation').append(vSelectFamilyRelation); //memasukan data yg sudah di jahit ke dalam body
+                $('#idEducationalLevel').append(vSelectEducationalLevel); //memasukan data yg sudah di jahit ke dalam body
             }
+        });
+
+        var vSelectGender =
+            {true:'Laki-laki', false:'Perempuan'};
+
+        $("#idDob").datepicker({ //datepicker
+            dateFormat: "yy-mm-dd"
         });
 
         $.ajax({
@@ -109,13 +170,14 @@
             data: { ID: $('#idget').val() },
             method: 'Get',
             success: function (mdl) {
+
                 debugger;
                 $('#idFamilyTreeType').val(mdl.family_tree_type_id).selected;
                 $('#idFamilyRelation').val(mdl.family_relation_id).selected;
                 $('#idName').val(mdl.name);
                 $('#idGender').val(mdl.gender).selected;
                 $('#idDob').val(mdl.dob);
-                $('#idEducationLevel').val(mdl.education_level_id);
+                $('#idEducationalLevel').val(mdl.educational_level_id).selected;
                 $('#idJob').val(mdl.job);
                 $('#idNotes').val(mdl.notes);
             }
@@ -128,47 +190,175 @@
         });
 
         $('#idBtnCancelKeluarga').click(function () {
-            $('#idMdlCreateKeluarga').close;
+            $('#idMdlEditKeluarga').close;
             location.reload();
         });
-
-        $('#idBtnEditKeluarga').click(function () {
-            debugger;
-            var skill = $('#idJenisSusunanKeluarga').val();
-
-            if (skill == "") {
-                alert('Level Keahlian Tidak Boleh Kosong');
-                $('#idSkillLevel').focus();
-            }
-            else {
-                var vDatakeahlian = $('#idFrmEditKeahlian').serialize();
-                $.ajax({
-                    url: '/Keahlian/EditSimpan',
-                    data: vDatakeahlian,
-                    method: 'Post',
-                    success: function (mdl) {
-                        if (mdl.EditSimpan == "Berhasil") {
-                            debugger;
-                            alert("Data berhasil diEdit");
-                            //$('.modal').modal('hide');
-                            //$.modal.close();
-                            $('#idMdlEditKeahlian').close;
-                            location.reload();
-
-                        }
-                        else {
-                            debugger;
-                            alert("Data gagal diEdit");
-                        }
-                    }
-                });
-            }
-        });
-
 
         $("#idDob").datepicker({ //datepicker
             dateFormat: "yy-mm-dd"
         }).datepicker("setDate", new Date());
-
     });
+
+     function updatekeluarga(){
+        var vDatakeluarga = $('#idFrmEditKeluarga').serialize();
+        $.ajax({
+            url: '/Keluarga/EditSimpan',
+            data: vDatakeluarga,
+            method: 'Post',
+            success: function (mdl) {
+                debugger;
+                if (mdl.Simpan == "Berhasil") {
+                    alert("Data berhasil disimpan");
+                    //$('.modal').modal('hide');
+                    //$.modal.close();
+                    $('#idMdlEditKeluarga').close;
+                    location.reload();
+                }
+                else {
+                    debugger;
+                    alert("Data gagal disimpan");
+                }
+            }
+        });
+        }
+    //});
+</script>
+
+<script>
+// (1) Defining our validator-functions
+//     for later use. They return
+//     "true", if the validation passes.
+const validators = {
+  // Checks the field for emptiness.
+    required: element => element.value.length > 0,
+
+  // Checks if there are no numbers
+  // in the field.
+  noNumbers: element => !element.value.match(/[0-9]/g),
+
+  // Checks if the value is shorter
+  // than 10 characters.
+  maxLength: element => element.value.length <= 10,
+
+  // Checks if the checkbox is checked.
+  mustBeChecked: element => element.checked
+};
+
+// (2) Check the contents of an input,
+//     get all validators, and mark
+//     the field in case of invalidity.
+function validateElement(element) {
+  resetValidation(element);
+
+  // Store all validators from the
+  // data-validate-attribute into
+  // an array.
+  const rules = element.dataset.validate.split(" ");
+
+  // For every validator on the
+  // field...
+  rules.forEach(rule => {
+    // ...find the corresponding
+    // validator-function from our
+    // object from #1 and call it
+    // with the element as parameter.
+    if (validators[rule](element)) {
+      // If the function returns true, all is fine.
+        debugger;
+        return;
+    } else {
+      // If it returns false, the
+      // validation failed.
+      // In that case, the
+      // markElementInvalid-function
+      // takes care of showing the
+      // error-message.
+      markElementInvalid(element, rule);
+    }
+  });
+}
+
+// (3) Adds classes to an element,
+//     so it appears invalid. Also
+//     it picks the correct feedback-
+//     message and sets it visible.
+function markElementInvalid(element, validatorName) {
+  element.classList.add("invalid");
+  element.setAttribute("aria-invalid", true);
+  const feedbackMessage = element.parentNode.querySelector(
+    `[data-validation-message=${validatorName}]`
+  );
+  feedbackMessage.classList.add("message-visible");
+  feedbackMessage.setAttribute("aria-hidden", false);
+}
+
+// (4) Removes all traces of
+//     validation from an element,
+//     like the error-messages and
+//     the styling.
+//     (Pretty much the opposite of #3)
+function resetValidation(element) {
+  element.classList.remove("invalid");
+  element.setAttribute("aria-invalid", false);
+  element.parentNode
+    .querySelectorAll("[data-validation-message]")
+    .forEach(e => {
+      e.classList.remove("message-visible");
+      e.setAttribute("aria-hidden", true);
+    });
+}
+
+// (5) Store the form and its
+//     inputs in variables.
+const form = document.getElementById("idFrmEditKeluarga");
+const formElements = Array.from(form.elements);
+
+// (6) Every input gets an
+//     event-listener attached.
+formElements.forEach(formElement => {
+  // Do nothing if the element has
+  // no data-validate-attribute.
+  if (!formElement.dataset) return;
+  if (!formElement.dataset.validate) return;
+
+  // Attach the blur-event-listener
+  // to the element.
+  formElement.addEventListener("", () => {
+    // This means, validateElement will
+    // be called everytime the element
+    // loses focus.
+    validateElement(formElement);
+  });
+});
+
+// (7) We're doing what we did at #3,
+//     only on form-submit, and for
+//     every field.
+form.addEventListener("submit", event => {
+  // Let's assume, everything is fine.
+  let formIsValid = true;
+  form.classList.remove("invalid");
+
+  // We'll check every field in the form.
+  // (same as #3)
+  formElements.forEach(formElement => {
+    if (!formElement.dataset) return;
+    if (!formElement.dataset.validate) return;
+    validateElement(formElement);
+  });
+
+  // If there are any "invalid"-classes
+  // after we checked all fields, the form
+  // is invalid...
+  formIsValid = form.querySelectorAll(".invalid").length === 0;
+
+  // ...and will not be submitted.
+  if (formIsValid === false) {
+    form.classList.add("invalid");
+    event.preventDefault();
+  } else {
+      debugger;
+      updatekeluarga();
+  }
+});
 </script>

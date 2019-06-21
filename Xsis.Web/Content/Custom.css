@@ -19,6 +19,10 @@
     background-color:#000080;
     color:white;
 }
+.merahbg{
+    background-color:#A92E13;
+    color:white;
+}
 .biruwoy{
     background-color:#000080;
     color:white;
@@ -33,6 +37,14 @@
 .orenwoy:hover{
     background-color:red;
 }
+.merahwoy{
+    background-color:#A92E13;
+    color:white;
+}
+.merahwoy:hover{
+    background-color:red;
+    color:white;
+}
 .table{
     color:#000080;
 }
@@ -41,5 +53,18 @@
     width:800px;
 }
 .tengahwoy{
-padding-right:800px;
+    padding-right:800px;
+}
+.tengahpls{
+    background-color:none;
+    padding-top:150px;
+    width:500px;
+}
+.lebarpls{
+    margin-left:50px;
+    width:520px;
+    height:220px;
+}
+.merahtext{
+    color:#A92E13;
 }

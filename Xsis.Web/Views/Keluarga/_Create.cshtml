@@ -102,8 +102,8 @@
         </tr>
     </table>
 </form>
-<script>
 
+<script>
     $(document).ready(function () {
         var vSelectFamilyTreeType = '';
 
@@ -114,7 +114,7 @@
                 debugger;
                 $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
                     vSelectFamilyTreeType = vSelectFamilyTreeType +
-                        '<option value="' + d.family_tree_type_id + '">' +
+                        '<option value="' + d.id + '">' +
                             d.name +
                             '</option>';
                 });
@@ -130,7 +130,7 @@
                 debugger;
                 $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
                     vSelectFamilyRelation = vSelectFamilyRelation +
-                        '<option value="' + d.family_relation_id + '">' +
+                        '<option value="' + d.id + '">' +
                             d.name +
                             '</option>';
                 });
@@ -146,7 +146,7 @@
                 debugger;
                 $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
                     vSelectEducationalLevel = vSelectEducationalLevel +
-                        '<option value="' + d.educational_level_id + '">' +
+                        '<option value="' + d.id + '">' +
                             d.name +
                             '</option>';
                 });
@@ -154,20 +154,24 @@
             }
         });
 
-    });
+        $("#idDob").datepicker({ //datepicker
+            dateFormat: "yy-mm-dd"
+        });
 
-    $("#idDob").datepicker({ //datepicker
-        dateFormat: "yyyy-mm-dd"
-    });
+        $('.ClBtnCloseKeluarga').click(function () {
+            debugger;
+            $('#idMdlCreateKeluarga').close;
+            location.reload();
+        });
 
-    $('#idBtnCancelKeluarga').click(function () {
-        $('#idMdlCreateKeluarga').close;
-        location.reload();
-    });
+        $('#idBtnCancelKeluarga').click(function () {
+            $('#idMdlCreateKeluarga').close;
+            location.reload();
+        });
 
-    $('.ClBtnCloseKeluarga').click(function () {
-        $('#idMdlCloseKeluarga').close;
-        location.reload();
+        $("#idDob").datepicker({ //datepicker
+            dateFormat: "yy-mm-dd"
+        }).datepicker("setDate", new Date());
     });
 
      function simpankeluarga(){

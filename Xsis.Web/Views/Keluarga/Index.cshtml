@@ -5,7 +5,7 @@
 
 
 <div class="table-responsive" style="height:600px;">
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr style="border-bottom:3px solid blue;">
                 <td colspan="7">
@@ -18,7 +18,7 @@
                 <td>JK</td>
                 <td>TGL. LAHIR</td>
                 <td>PENDIDIKAN</td>
-                <td>PEKEJAAN</td>
+                <td>PEKERJAAN</td>
                 <td>#</td>
             </tr>
         </thead>
@@ -30,19 +30,10 @@
     <div class="modal-dialog" role="document" style="width:800px;">
         <div class="modal-content">
             <div class="modal-header  birubg">
-                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
-                <h4 class="modal-title">Tambah Keluarga <span style="padding-left:590px;"></span> <button class="ClBtnCloseKeluarga" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button></h4>
+               <h4 class="modal-title">Tambah Keluarga <span style="padding-left:590px;"></span> <button class="ClBtnCloseKeluarga" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button></h4>
             </div>
             <div class="modal-body" id="idBodyCreateKeluarga">
-
-
-
-                @*<p>One fine body&hellip;</p>*@
             </div>
-            @*<div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>*@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -52,19 +43,10 @@
     <div class="modal-dialog" role="document" style="width:800px;">
         <div class="modal-content">
             <div class="modal-header birubg">
-                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
-                <h4 class="modal-title">Ubah Keluarga <span style="padding-left:610px;"></span> <button class="ClBtnCloseKeluarga" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button></h4>
+               <h4 class="modal-title">Ubah Keluarga <span style="padding-left:610px;"></span> <button class="ClBtnCloseKeluarga" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button></h4>
             </div>
             <div class="modal-body" id="idBodyEditKeluarga">
-
-
-
-                @*<p>One fine body&hellip;</p>*@
             </div>
-            @*<div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>*@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -73,32 +55,15 @@
     <div class="modal-dialog tengahpls" role="document">
         <div class="modal-content lebarpls">
             <div class="modal-header merahbg">
-                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
                 <h4 class="modal-title">Hapus Keluarga ?</h4>
             </div>
             <div class="modal-body" id="idBodyHapusKeluarga">
-
-
-
-                @*<p>One fine body&hellip;</p>*@
             </div>
-            @*<div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>*@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 <script>
-    var vDataFamilyTreeType =
-          { 1: 'Inti', 2: 'Utama' };
-    var vDataFamilyRelation =
-          { 1: 'Bapak', 2: 'Ibu', 3: 'Anak', 4: 'Suami', 5: 'Istri' };
-    var vDataGender =
-          { false: 'Perempuan', true: 'Laki-laki' };
-    var vDataEducationLevel =
-          { 1: 'SD', 2: 'SLTP', 3: 'SLTA', 4: 'Sarjana' };
 
     $(document).ready(function () {
 
@@ -111,26 +76,47 @@
                 debugger;
                 $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
                     debugger;
-                    vDataDob = new Date(d.dob.Date);
 
-                    vStrHtml = vStrHtml + '<tr class="birutext">' +
-                        '<td>' + vDataFamilyRelation[d.family_relation_id] + '</td>' +
-                        '<td>' + d.name + '</td>' +
-                        '<td>' + vDataGender[d.gender] + '</td>' +
-                        '<td>' + vDataDob + '</td>' +
-                        '<td>' + vDataEducationLevel[d.education_level_id] + '</td>' +
-                        '<td>' + d.job + '</td>' +
-                        '<td class="dropdown">' +
-                        '<button class="btn birubg dropdown-toggle" type="button" data-toggle="dropdown">More &nbsp;'+
-                        '<span class="caret"></span>'+
-                        '</button>'+
-                        '<ul class="dropdown-menu">'+
-                        '<li><a class="UbahKeluarga" dataID="'+ d.id +'" href="#">Ubah</a></li>'+
-                        '<li><a class="HapusKeluarga" dataID="' + d.id + '" href="#">Hapus</a></li>' +
+                    if (d.gender == true) {
+                        debugger;
+                        vDataGender = 'Laki-laki';
+                    }
+                    else{
+                        debugger;
+                        vDataGender = 'Perempuan';
+                    }
+                    
+                    if (d.dob == null) {
+                        debugger;
+                        vDataDob = '-';
+                    }
+                    else {
+                        debugger;
+                        a = new Date(parseInt(d.dob.substr(6)));
+                        vtanggal = (a.getDate() < 10 ? '0' : '') + a.getDate();
+                        vbulan = a.getMonth();
+                        var vMonthList = { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'Mei', 6: 'Jun', 7: 'Jul', 8: 'Agu', 9: 'Sep', 10: 'Okt', 11: 'Nov', 12: 'Des' };
+                        vtahun = a.getFullYear();
+                        vDataDob = vtanggal + "-" + vMonthList[vbulan] + "-" + vtahun;
+                    }
+
+                    vStrHtml = vStrHtml + ' <tr class="birutext">' +
+                        '<td style="border-top:2px solid blue;">' + d.family_relation_name + '</td>' +
+                        '<td style="border-top:2px solid blue;">' + d.name + '</td>' +
+                        '<td style="border-top:2px solid blue;">' + vDataGender + '</td>' +
+                        '<td style="border-top:2px solid blue;">' + vDataDob + '</td>' +
+                        '<td style="border-top:2px solid blue;">' + d.educational_level_name + '</td>' +
+                        '<td style="border-top:2px solid blue;">' + d.job + '</td>' +
+                        '<td style="border-top:2px solid blue;" class="dropdown">' +
+                        '<button class="btn birubg dropdown-toggle" type="button" data-toggle="dropdown">More &nbsp;' +
+                        '<span class="caret"></span>' +
+                        '</button>' +
+                        '<ul class="dropdown-menu">' +
+                        '<li><a class="UbahKeluarga" dataID="' + d.id + '" href="#">Ubah</a></li>' +
+                        '<li><a class="HapusKeluargaCfr" dataID="' + d.id + '" href="#">Hapus</a></li>' +
                         '</ul>' +
                         '</td>' +
                         '</tr>';
-
                 });
 
                 $('#idTblBodyKeluarga').append(vStrHtml); //memasukan data yg sudah di jahit ke dalam body

@@ -1,117 +1,211 @@
-﻿
+﻿<style type="text/css">
+    [data-validation-message] {
+        display: none;
+        color: red;
+        font-weight: bold;
+    }
+
+        [data-validation-message].message-visible {
+            display: block;
+        }
+
+    .blueborder {
+        border-color: blue;
+    }
+
+        .blueborder.invalid {
+            border-color: red;
+        }
+</style>
+
 <form action="" method="post" id="idFrmEditBiodata">
     <table class="table" style="font-size:12px;">
         <tr>
             <td colspan="12">
                 <input type="hidden" name="id" id="idget" />
                 <label>Nama Lengkap *</label>
-                <input type="text" name="fullname" class="form-control" id="idFullname">
+                <input type="text" name="fullname" class="form-control blueborder" data-validate="required" id="idFullname">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Nama Lengkap Tidak Boleh Kosong.
+                </small>
                 </td>
             <td colspan="12">
                 <label>Nama Panggilan *</label>
-                <input type="text" name="nick_name" class="form-control" id="idNickName">
+                <input type="text" name="nick_name" class="form-control blueborder" data-validate="required" id="idNickName">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Nama Panggilan Tidak Boleh Kosong.
+                </small>
             </td>
         </tr>
         <tr>
             <td colspan="6">
                 <label>Tempat Lahir *</label>
-                <input type="text" name="pob" class="form-control" id="idPob">
+                <input type="text" name="pob" class="form-control blueborder" data-validate="required" id="idPob">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Tempat Lahir Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
-                <label>Tgl. Lahir (yyyy-mm-yy)</label>
-                <input type="text" name="dob" class="form-control" id="idDob">
+                <label>Tgl. Lahir (yyyy-mm-yy) *</label>
+                <input type="text" name="dob" class="form-control blueborder" data-validate="required" id="idDob">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Tanggal Lahir Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
-                <label>Jenis Kelamin</label>
-                <select class="form-control" name="gender" id="idGender">
+                <label>Jenis Kelamin *</label>
+                <select class="form-control blueborder" name="gender" data-validate="required" id="idGender">
                     <option value="">-Pilih-</option>
                     <option value=0>Perempuan</option>
                     <option value=1>Laki-laki</option>
                 </select>
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Jenis Kelamin Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
-                <label>Agama</label>
-                <select class="form-control" name="religion_id" id="idReligion">
+                <label>Agama *</label>
+                <select class="form-control blueborder" name="religion_id" data-validate="required" id="idReligion">
                     <option value="">-Pilih-</option>
                     <option value="1">Islam</option>
                     <option value="2">Kristen</option>
                 </select>
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Agama Tidak Boleh Kosong.
+                </small>
             </td>
         </tr>
         <tr>
             <td colspan="6">
                 <label>Tinggi (cm) *</label>
-                <input type="text" name="high" class="form-control" id="idHigh">
+                <input type="text" name="high" class="form-control blueborder" data-validate="required" id="idHigh">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Tinggi Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
                 <label>Berat (kg) *</label>
-                <input type="text" name="weight" class="form-control" id="idWeight">
+                <input type="text" name="weight" class="form-control blueborder" data-validate="required" id="idWeight">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Berat Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
                 <label>Kewarganegaraan *</label>
-                <input type="text" name="nationality" class="form-control" id="idNationality">
+                <input type="text" name="nationality" class="form-control blueborder" data-validate="required" id="idNationality">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Kewarganegaraan Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
                 <label>Suku Bangsa</label>
-                <input type="text" name="ethnic" class="form-control" id="idEthnic">
+                <input type="text" name="ethnic" class="form-control blueborder" id="idEthnic">
             </td>
         </tr>
         <tr>
             <td colspan="12">
-                <label>Kegemaran / Hobi *</label>
-                <input type="text" name="hobby" class="form-control" id="idHobby">
+                <label>Kegemaran / Hobi</label>
+                <input type="text" name="hobby" class="form-control blueborder" id="idHobby">
             </td>
             <td colspan="6">
                 <label>Jenis Identitas *</label>
-                <select class="form-control" name="identity_type_id" id="idIdentityType">
+                <select class="form-control blueborder" name="identity_type_id" data-validate="required" id="idIdentityType">
                     <option value="">-Pilih-</option>
                     <option value="1">KTP</option>
                     <option value="2">SIM</option>
                 </select>
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Jenis Identitas Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
-                <label>Nomor Identitas *</label>
-                <input type="text" name="identity_no" class="form-control" id="idIdentityNo">
+                <label>Nomor Identitas</label>
+                <input type="text" name="identity_no" class="form-control blueborder" id="idIdentityNo">
             </td>
         </tr>
         <tr>
             <td colspan="6">
                 <label>Email *</label>
-                <input type="text" name="email" class="form-control" id="idEmail">
+                <input type="text" name="email" class="form-control blueborder" data-validate="required" id="idEmail">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Email Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
                 <label>No. HP</label>
-                <input type="text" name="phone_number1" class="form-control" id="idPhoneNumber1">
+                <input type="text" name="phone_number1" class="form-control blueborder" id="idPhoneNumber1">
             </td>
             <td colspan="6">
                 <label>No. HP Alternatif</label>
-                <input type="text" name="phone_number2" class="form-control" id="idPhoneNumber2">
+                <input type="text" name="phone_number2" class="form-control blueborder" id="idPhoneNumber2">
             </td>
             <td colspan="6">
                 <label> No. Tlp (Orang Tua) *</label>
-                <input type="text" name="parent_phone_number" class="form-control" id="idParentPhoneNumber">
+                <input type="text" name="parent_phone_number" class="form-control blueborder" data-validate="required" id="idParentPhoneNumber">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    No. Tlp (Orang Tua) Tidak Boleh Kosong.
+                </small>
             </td>
         </tr>
         <tr>
             <td colspan="6">
                 <label>Anak Ke *</label>
-                <input type="text" name="child_sequence" class="form-control" id="idChildSequence">
+                <input type="text" name="child_sequence" class="form-control blueborder" data-validate="required" id="idChildSequence">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Anak ke Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
                 <label>Dari Berapa Bersaudara *</label>
-                <input type="text" name="how_many_brothers" class="form-control" id="idHowManyBrothers">
+                <input type="text" name="how_many_brothers" class="form-control blueborder" data-validate="required" id="idHowManyBrothers">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Dari Berapa Bersaudara Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
                 <label>Status Pernikahan *</label>
-                <select class="form-control" name="marital_status_id" id="idMaritalStatus">
+                <select class="form-control blueborder" name="marital_status_id" data-validate="required" id="idMaritalStatus">
                     <option value="">-Pilih-</option>
                     <option value="1">Menikah</option>
                     <option value="2">Single</option>
                 </select>
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Status Pernikahan Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
-                <label>Tahun Pernikahan *</label>
-                <select class="form-control" name="mariage_year" id="idMariageYear">
+                <label>Tahun Pernikahan</label>
+                <select class="form-control blueborder" name="mariage_year" id="idMariageYear">
                     <option>-Pilih-</option>
                     <option>1990</option>
                     <option>1991</option>
@@ -131,69 +225,129 @@
         <tr>
             <td colspan="12">
                 <label>Alamat *</label>
-                <input type="text" name="address1" class="form-control" id="idAddress1">
+                <input type="text" name="address1" class="form-control blueborder" data-validate="required" id="idAddress1">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Alamat Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="12">
                 <label>Alamat *</label>
-                <input type="text" name="address2" class="form-control" id="idAddress2">
+                <input type="text" name="address2" class="form-control blueborder" data-validate="required" id="idAddress2">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Alamat Tidak Boleh Kosong.
+                </small>
             </td>
         </tr>
         <tr>
             <td colspan="6">
                 <label>Kode Pos</label>
-                <input type="text" name="postalcode1" class="form-control" id="idPostalCode1">
+                <input type="text" name="postalcode1" class="form-control blueborder" id="idPostalCode1">
             </td>
             <td colspan="3">
                 <label>RT *</label>
-                <input type="text" name="rw1" class="form-control" id="idRt1">
+                <input type="text" name="rw1" class="form-control blueborder" data-validate="required" id="idRt1">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    RT Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="3">
                 <label>RW *</label>
-                <input type="text" name="rw1" class="form-control" id="idRw1">
+                <input type="text" name="rw1" class="form-control blueborder" data-validate="required" id="idRw1">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    RT Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
                 <label>Kode Pos</label>
-                <input type="text" name="postalcode2" class="form-control" id="idPostalCode2">
+                <input type="text" name="postalcode2" class="form-control blueborder" id="idPostalCode2">
             </td>
             <td colspan="3">
                 <label>RT *</label>
-                <input type="text" name="rw2" class="form-control" id="idRt2">
+                <input type="text" name="rw2" class="form-control blueborder" data-validate="required" id="idRt2">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    RT Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="3">
                 <label>RW *</label>
-                <input type="text" name="rw2" class="form-control" id="idRw2">
+                <input type="text" name="rw2" class="form-control blueborder" data-validate="required" id="idRw2">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    RW Tidak Boleh Kosong.
+                </small>
             </td>
         </tr>
         <tr>
             <td colspan="6">
                 <label>Desa/Kelurahan *</label>
-                <input type="text" name="kelurahan1" class="form-control" id="idKelurahan1">
+                <input type="text" name="kelurahan1" class="form-control blueborder" data-validate="required" id="idKelurahan1">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Desa/Kelurahan Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="3">
                 <label>Kecamatan *</label>
-                <input type="text" name="kecamatan1" class="form-control" id="idKecamatan1">
+                <input type="text" name="kecamatan1" class="form-control blueborder" data-validate="required" id="idKecamatan1">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Kecamatan Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="3">
                 <label>Kota *</label>
-                <input type="text" name="rw1" class="form-control" id="idRegion1">
+                <input type="text" name="rw1" class="form-control blueborder" data-validate="required" id="idRegion1">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Kota Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="6">
                 <label>Desa/Kelurahan *</label>
-                <input type="text" name="kelurahan2" class="form-control" id="idKelurahan2">
+                <input type="text" name="kelurahan2" class="form-control blueborder" data-validate="required" id="idKelurahan2">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Desa/Keluarahan Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="3">
                 <label>Kecamatan *</label>
-                <input type="text" name="kecamatan2" class="form-control" id="idKecamatan2">
+                <input type="text" name="kecamatan2" class="form-control blueborder" data-validate="required" id="idKecamatan2">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Kecamatan Tidak Boleh Kosong.
+                </small>
             </td>
             <td colspan="3">
                 <label>Kota *</label>
-                <input type="text" name="rw2" class="form-control" id="idRegion2">
+                <input type="text" name="rw2" class="form-control blueborder" data-validate="required" id="idRegion2">
+                <small role="alert"
+                       aria-hidden="true"
+                       data-validation-message="required">
+                    Kota Tidak Boleh Kosong.
+                </small>
             </td>
         </tr>
         <tr>
             <td colspan="24" align="right">
                 <button type="button" class="btn orenwoy" id="idBtnCancelBiodata">Cancel</button>
-                <button type="button" class="btn biruwoy" id="idBtnUpdateBiodata">Submit</button>
+                <button type="submit" class="btn biruwoy" id="idBtnUpdateBiodata">Submit</button>
             </td>
         </tr>
     </table>
@@ -264,15 +418,13 @@
             }
         });
 
-        $("#idDob").datepicker({ //datepicker
-            dateFormat: "yy-mm-dd"
-        }).datepicker("setDate", new Date());
-
         $('#idBtnCancelBiodata').click(function () {
-            $('#idMdlCreateBiodata').close;
+            $('#idMdlEditBiodata').close;
             location.reload();
         });
+    });
 
+    function simpanbiodata() {
         $('#idBtnUpdateBiodata').click(function () {
             debugger;
             var vDatabiodata = $('#idFrmEditBiodata').serialize();
@@ -295,6 +447,145 @@
                 }
             });
         });
+    }
 
+</script>
+
+<script>
+// (1) Defining our validator-functions
+//     for later use. They return
+//     "true", if the validation passes.
+const validators = {
+  // Checks the field for emptiness.
+    required: element => element.value.length > 0,
+
+  // Checks if there are no numbers
+  // in the field.
+  noNumbers: element => !element.value.match(/[0-9]/g),
+
+  // Checks if the value is shorter
+  // than 10 characters.
+  maxLength: element => element.value.length <= 10,
+
+  // Checks if the checkbox is checked.
+  mustBeChecked: element => element.checked
+};
+
+// (2) Check the contents of an input,
+//     get all validators, and mark
+//     the field in case of invalidity.
+function validateElement(element) {
+  resetValidation(element);
+
+  // Store all validators from the
+  // data-validate-attribute into
+  // an array.
+  const rules = element.dataset.validate.split(" ");
+
+  // For every validator on the
+  // field...
+  rules.forEach(rule => {
+    // ...find the corresponding
+    // validator-function from our
+    // object from #1 and call it
+    // with the element as parameter.
+    if (validators[rule](element)) {
+      // If the function returns true, all is fine.
+        debugger;
+        return;
+    } else {
+      // If it returns false, the
+      // validation failed.
+      // In that case, the
+      // markElementInvalid-function
+      // takes care of showing the
+      // error-message.
+      markElementInvalid(element, rule);
+    }
+  });
+}
+
+// (3) Adds classes to an element,
+//     so it appears invalid. Also
+//     it picks the correct feedback-
+//     message and sets it visible.
+function markElementInvalid(element, validatorName) {
+  element.classList.add("invalid");
+  element.setAttribute("aria-invalid", true);
+  const feedbackMessage = element.parentNode.querySelector(
+    `[data-validation-message=${validatorName}]`
+  );
+  feedbackMessage.classList.add("message-visible");
+  feedbackMessage.setAttribute("aria-hidden", false);
+}
+
+// (4) Removes all traces of
+//     validation from an element,
+//     like the error-messages and
+//     the styling.
+//     (Pretty much the opposite of #3)
+function resetValidation(element) {
+  element.classList.remove("invalid");
+  element.setAttribute("aria-invalid", false);
+  element.parentNode
+    .querySelectorAll("[data-validation-message]")
+    .forEach(e => {
+      e.classList.remove("message-visible");
+      e.setAttribute("aria-hidden", true);
     });
+}
+
+// (5) Store the form and its
+//     inputs in variables.
+const form = document.getElementById("idFrmEditBiodata");
+const formElements = Array.from(form.elements);
+
+// (6) Every input gets an
+//     event-listener attached.
+formElements.forEach(formElement => {
+  // Do nothing if the element has
+  // no data-validate-attribute.
+  if (!formElement.dataset) return;
+  if (!formElement.dataset.validate) return;
+
+  // Attach the blur-event-listener
+  // to the element.
+  formElement.addEventListener("", () => {
+    // This means, validateElement will
+    // be called everytime the element
+    // loses focus.
+    validateElement(formElement);
+  });
+});
+
+// (7) We're doing what we did at #3,
+//     only on form-submit, and for
+//     every field.
+form.addEventListener("submit", event => {
+  // Let's assume, everything is fine.
+  let formIsValid = true;
+  form.classList.remove("invalid");
+
+  // We'll check every field in the form.
+  // (same as #3)
+  formElements.forEach(formElement => {
+    if (!formElement.dataset) return;
+    if (!formElement.dataset.validate) return;
+    validateElement(formElement);
+  });
+
+  // If there are any "invalid"-classes
+  // after we checked all fields, the form
+  // is invalid...
+  formIsValid = form.querySelectorAll(".invalid").length === 0;
+
+  // ...and will not be submitted.
+  if (formIsValid === false) {
+    form.classList.add("invalid");
+    event.preventDefault();
+  } else {
+      debugger;
+      simpanbiodata();
+  }
+});
 </script>
