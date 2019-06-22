@@ -165,10 +165,9 @@
     <Content Include="Views\Keluarga\_Create.cshtml" />
     <Content Include="Views\Keluarga\_Edit.cshtml" />
     <Content Include="Views\Biodata\Index.cshtml" />
-    <Content Include="Views\SelectAccess\Index.cshtml" />
     <Content Include="Views\Biodata\_Edit.cshtml" />
-    <Content Include="Views\SelectAccess\Gagal.cshtml" />
     <Content Include="Views\Keluarga\_Delete.cshtml" />
+    <Content Include="Views\SelectAccess\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

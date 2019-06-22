@@ -1,4 +1,4 @@
-﻿
+﻿5
 @{
     Layout = null;
 }
@@ -6,156 +6,109 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script src="~/Scripts/modernizr-2.6.2.js"></script>
-        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-        <script src="~/scripts/bootstrap.js"></script>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/scripts/bootstrap.js"></script>
 
-            <style type="text/css">
-                .background-lgn 
-                {
-                    position: absolute;
-                    margin: auto;
-                    left: 0;
-                    top: 0;
-                    bottom:0;
-                    right:0;
-                    width: 470px;
-                    height: 300px;
-                    background-color: #f0f5f5;
-                    border-color:#000080;
-                    border-style: solid;
-                    border-width: 1px;
-                    text-align:center;
-                }
-                .cntr-content
-                {
-                    position: absolute;
-                    margin: auto;
-                    left: 18%;
-                    top: 5%;
-                    text-align:center;
-                }
-                .brdr-lgn
-                {
-                    border-color:#000080;
-                    border-style: solid;
-                    border-width: 1px;
-                }
-                .fnt
-                {
-                    font-weight:bold;
-                    color:#000080;
-                }
-                .size-lgn
-                {
-                    width: 300px;
-                    height: 30px;
-                }
-              .btn-clr
-              {
-                  font-weight:bold;
-                  color: white;
-                  background-color: #000080;
-                  width: 280px;              
-              }
-              .btn:hover
-              {
-                color: white;
-              }     
-              .btn:focus
-              {
-                  color: white;
-              }             
-        </style>
-        <title>Index</title>
-    </head>
-    <body>
-        <div class="row background-lgn">
-            <div class="col-md-6 cntr-content">
-                <form id="frmLogin">
-                    <table>
-                        <tr>
-                            <td><h1 class="fnt" style="font-size:40px;">XSIS 2.0</h1></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" class="form-control brdr-lgn size-lgn" id="txtEmail" placeholder="Email"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" class="form-control brdr-lgn size-lgn" id="txtPwd" placeholder="Password"></td>
-                        </tr>
-                        <tr>
-                            <td><button type="button" class="btn btn-clr size-lgn" id="btnSubmit">Masuk</button></td>
-                        </tr>
-                        <tr>
-                            <td><a class="fnt" href="https://www.w3schools.com/html/">Lupa Password</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <br />
-                                <br />
-                                <p class="fnt">2020 - Xsis Mitra Utama</p>
-                            </td>
-                        </tr>
-                    </table>           
-                </form> 
+    <style type="text/css">
+        .box {
+            width: 33%;
+            height: 200px;
+            background: white;
+        }
+
+        .font-style {
+            background-color: #000080;
+            color: white;
+            border-top-left-radius: 3%;
+            border-top-right-radius: 3%;
+            padding: 15px;
+        }
+
+        .cntr-hdr {
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: space-between; /*button exit na jadi gak nempel lagi ke modal title*/
+        }
+
+        .background-lgn {
+            position: absolute;
+            margin: auto;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f5f5;
+            border-style: solid;
+            border-width: 1px;
+            text-align: center;
+        }
+
+        .cntr-content {
+            position: absolute;
+            margin: auto;
+            left: 30%;
+            top: 35%;
+            text-align: center;
+        }
+
+        .form-geser {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .brdr-lgn {
+            border-color: #000080;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 3%;
+        }
+
+        .fnt {
+            font-weight: bold;
+            color: #000080;
+        }
+    </style>
+    <style>
+        .skin-blue .sidebar-menu > li:hover > a, .skin-blue .sidebar-menu > li.active > a, .skin-blue .sidebar-menu > li.menu-open > a {
+            color: #fff;
+            background: #000000;
+        }
+    </style>
+
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <div class="box cntr-content brdr-lgn" role="dialog" aria-labelledby="dialogTitle" aria-describedby="dialog1Desc">
+            <p class="font-style" id="dialogTitle" align="left">Masukkan email terdaftar</p>
+            <div id="dialog1Desc">
+                <form class="form form-geser">
+                    <ul class="btn birubg dropdown" type="button" data-toggle="dropdown">
+                        <li class="active treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                                <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </form>
             </div>
-        </div>
-    </body>
+
+         </div> 
+    </div>
+</body>
 </html>
-
-
-<script>
-    $('#btnSubmit').click(function () {
-        debugger;
-        var vUser = $('#txtEmail').val()
-        var vPwd = $('#txtPwd').val()
-        debugger;
-
-        $.ajax({
-            url: '/Login/cekUser',
-            data: { vUser },
-            method: 'post',
-            success: function (mdl)
-            {
-                debugger;
-                if (mdl.email == vUser || mdl.abuid == vUser && mdl.abpwd == vPwd)
-                {
-                    if (mdl.is_delete == true)
-                    {
-                        debugger;
-                        alert("Akun anda tidak aktif");
-                    }
-                    else if (mdl.is_locked == true)
-                    {
-                        debugger;
-                        alert("Akun anda terkunci");
-                    }
-                    else
-                    {
-                        debugger;
-                        var uID = mdl.id
-                        var url="@Url.Action("Index","Home")"
-                        Session["UserID"] = uID;
-                        window.location.href = url;
-                    }
-                }
-                else
-                {
-                    debugger;
-                    alert("Invalid Email / Password");
-                }
-            },
-            error: function (mdl)
-            {
-                debugger;
-                alert("Invalid Email / Password");
-            }
-
-        });
-
-    });
-</script>

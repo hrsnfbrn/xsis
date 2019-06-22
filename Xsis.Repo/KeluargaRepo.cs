@@ -10,27 +10,6 @@ namespace Xsis.Repo
 {
     public class KeluargaRepo
     {
-        //public static List<Keluarga> GetAll()
-        //{
-        //    List<Keluarga> result = new List<Keluarga>();
-        //    using (var db = new DataContext())
-        //    {
-        //        //result = db.Keluarga.ToList();
-
-        //        result = (from t in db.Keluarga
-        //                  where t.is_delete == false
-        //                  select t).ToList();
-
-        //        //select new Keluarga { keluarga_name = t.keluarga_name, notes = t.notes, skill_level_id = t.skill_level_id }).ToList();
-
-
-        //        //result = (from item in db.Keluarga
-        //        //          where item.is_delete == false
-        //        //          select new Keluarga { item.skill_name }).ToList();
-        //        return result;
-        //    }
-        //}
-
         public static List<KeluargaViewModel> GetAll()
         {
             List<KeluargaViewModel> result = new List<KeluargaViewModel>();
@@ -39,7 +18,7 @@ namespace Xsis.Repo
                 result = (from item in db.Keluarga
                           join Educational_Level in db.Educational_Level on item.educational_level_id equals Educational_Level.id
                           join Family_Tree_Type in db.Family_Tree_Type on item.family_tree_type_id equals Family_Tree_Type.id
-                          join Family_Relation in db.Family_Relation on item.family_relation_id equals Family_Relation.id
+                          join Family_Relation in db.Family_Relation on item.family_tree_type_id equals Family_Relation.family_tree_type_id
                           where item.is_delete == false
                           select new KeluargaViewModel
                           {
@@ -48,7 +27,6 @@ namespace Xsis.Repo
                               name = item.name,
                               gender = item.gender,
                               dob = item.dob,
-                              educational_level_id = Educational_Level.id,
                               educational_level_name=Educational_Level.name,
                               job=item.job
                           }

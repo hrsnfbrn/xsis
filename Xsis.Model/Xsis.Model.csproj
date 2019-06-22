@@ -64,7 +64,7 @@
     <Compile Include="Keahlian.cs" />
     <Compile Include="Keluarga.cs" />
     <Compile Include="Keterangan_Tambahan.cs" />
-    <Compile Include="Maritial_Status.cs" />
+    <Compile Include="Marital_Status.cs" />
     <Compile Include="MenuTree.cs" />
     <Compile Include="Menu_Access.cs" />
     <Compile Include="Note_Type.cs" />

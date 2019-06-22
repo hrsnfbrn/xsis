@@ -20,11 +20,21 @@ namespace Xsis.Web.Controllers
             return Json(BiodataRepo.GetAll(), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Select()
+        public ActionResult SelectReligion()
         {
-            return Json(BiodataRepo.GetSelect(), JsonRequestBehavior.AllowGet);
+            return Json(BiodataRepo.GetSelectReligion(), JsonRequestBehavior.AllowGet);
         }
-        
+
+        public ActionResult SelectIdentityType()
+        {
+            return Json(BiodataRepo.GetSelectIdentityType(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SelectMaritalStatus()
+        {
+            return Json(BiodataRepo.GetSelectMaritalStatus(), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Edit(int ID)
         {
             return PartialView("_Edit");
@@ -33,19 +43,6 @@ namespace Xsis.Web.Controllers
         public ActionResult AmbilData(int ID)
         {
             return Json(BiodataRepo.GetByID(ID), JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Delete(int ID, Biodata biodatamdl)
-        {
-            biodatamdl.deleted_by = Convert.ToInt64(Session["foo"]);
-            if (BiodataRepo.Deletebiodata(ID, biodatamdl)) //non static if ( BiodataRepo.Deletebiodata(ID))
-            {
-                return Json(new { Hapus = "Berhasil" }, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(new { Hapus = "Gagal" }, JsonRequestBehavior.AllowGet);
-            }
         }
 
         public ActionResult EditSimpan(Biodata biodata)

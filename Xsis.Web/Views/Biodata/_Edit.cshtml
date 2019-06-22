@@ -64,8 +64,8 @@
                 <label>Jenis Kelamin *</label>
                 <select class="form-control blueborder" name="gender" data-validate="required" id="idGender">
                     <option value="">-Pilih-</option>
-                    <option value=0>Perempuan</option>
-                    <option value=1>Laki-laki</option>
+                    <option value=false>Perempuan</option>
+                    <option value=true>Laki-laki</option>
                 </select>
                 <small role="alert"
                        aria-hidden="true"
@@ -77,8 +77,6 @@
                 <label>Agama *</label>
                 <select class="form-control blueborder" name="religion_id" data-validate="required" id="idReligion">
                     <option value="">-Pilih-</option>
-                    <option value="1">Islam</option>
-                    <option value="2">Kristen</option>
                 </select>
                 <small role="alert"
                        aria-hidden="true"
@@ -129,8 +127,6 @@
                 <label>Jenis Identitas *</label>
                 <select class="form-control blueborder" name="identity_type_id" data-validate="required" id="idIdentityType">
                     <option value="">-Pilih-</option>
-                    <option value="1">KTP</option>
-                    <option value="2">SIM</option>
                 </select>
                 <small role="alert"
                        aria-hidden="true"
@@ -194,8 +190,6 @@
                 <label>Status Pernikahan *</label>
                 <select class="form-control blueborder" name="marital_status_id" data-validate="required" id="idMaritalStatus">
                     <option value="">-Pilih-</option>
-                    <option value="1">Menikah</option>
-                    <option value="2">Single</option>
                 </select>
                 <small role="alert"
                        aria-hidden="true"
@@ -207,10 +201,6 @@
                 <label>Tahun Pernikahan</label>
                 <select class="form-control blueborder" name="mariage_year" id="idMariageYear">
                     <option>-Pilih-</option>
-                    <option>1990</option>
-                    <option>1991</option>
-                    <option>1992</option>
-                    <option>1993</option>
                 </select>
             </td>
         </tr>
@@ -356,23 +346,66 @@
 <script>
 
     $(document).ready(function () {
+        var d = new Date();
+        var vOption = "";
+        for (var i = d.getFullYear() ; i >= 1970; i--) {
+            vOption = vOption +
+            '<option>' + i + '</option>'
+        }
+        $('#idMariageYear').append(vOption);
 
-        var vDataAddress1 = "Jl. Mundu 75";
-        var vDataAddress2 = "Jl. Mundu 75";
-        var vDataPostalCode1 = "13810";
-        var vDataRt1 = "01";
-        var vDataRw1 = "04";
-        var vDataPostalCode2 = "13810";
-        var vDataRt2 = "01";
-        var vDataRw2 = "04";
-        var vDataKelurahan1 = "Lubang Buaya";
-        var vDataKecamatan1 = "Cipayung";
-        var vDataRegion1 = "Jakarta";
-        var vDataKelurahan2 = "Lubang Buaya";
-        var vDataKecamatan2 = "Cipayung";
-        var vDataRegion2 = "Jakarta";
+
         var vDataGender =
-        { false: 'Perempuan', true: 'Laki-laki' };
+            { false: 'Perempuan', true: 'Laki-laki' };
+
+        var vSelectReligion = '';
+        $.ajax({
+            url: '/Biodata/SelectReligion',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+
+                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                    vSelectReligion = vSelectReligion +
+                        '<option value="' + d.id + '">' +
+                            d.name +
+                            '</option>';
+                });
+                $('#idReligion').append(vSelectReligion); //memasukan data yg sudah di jahit ke dalam body
+            }
+        });
+
+        var vSelectIdentityType = '';
+        $.ajax({
+            url: '/Biodata/SelectIdentityType',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                    vSelectIdentityType = vSelectIdentityType +
+                        '<option value="' + d.id + '">' +
+                            d.name +
+                            '</option>';
+                });
+                $('#idIdentityType').append(vSelectIdentityType); //memasukan data yg sudah di jahit ke dalam body
+            }
+        });
+
+        var vSelectMaritalStatus = '';
+        $.ajax({
+            url: '/Biodata/SelectMaritalStatus',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                    vSelectMaritalStatus = vSelectMaritalStatus +
+                        '<option value="' + d.id + '">' +
+                            d.name +
+                            '</option>';
+                });
+                $('#idMaritalStatus').append(vSelectMaritalStatus); //memasukan data yg sudah di jahit ke dalam body
+            }
+        });
 
         $.ajax({
             url: '/Biodata/AmbilData',
@@ -385,7 +418,7 @@
                 $('#idPob').val(mdl.pob);
                 $('#idDob').val(mdl.dob);
                 $('#idGender').val(vDataGender[mdl.gender]).selected;
-                $('#idReligion').val(mdl.religion_id);
+                $('#idReligion').val(mdl.religion_id).selected;
                 $('#idHigh').val(mdl.high);
                 $('#idWeight').val(mdl.weight);
                 $('#idNationality').val(mdl.nationality);
@@ -399,22 +432,22 @@
                 $('#idParentPhoneNumber').val(mdl.parent_phone_number);
                 $('#idChildSequence').val(mdl.child_sequence);
                 $('#idHowManyBrothers').val(mdl.how_many_brothers);
-                $('#idMaritalStatus').val(mdl.marital_status_id);
+                $('#idMaritalStatus').val(mdl.marital_status_id).selected;
                 $('#idMariageYear').val(mdl.mariage_year);
-                $('#idAddress1').val(vDataAddress1);
-                $('#idAddress2').val(vDataAddress1);
-                $('#idPostalCode1').val(vDataPostalCode1);
-                $('#idPostalCode2').val(vDataPostalCode2);
-                $('#idRt1').val(vDataRt1);
-                $('#idRw1').val(vDataRw1);
-                $('#idRt2').val(vDataRt1);
-                $('#idRw2').val(vDataRw2);
-                $('#idKelurahan1').val(vDataKelurahan1);
-                $('#idKecamatan1').val(vDataKecamatan1);
-                $('#idRegion1').val(vDataRegion1);
-                $('#idKelurahan2').val(vDataKelurahan2);
-                $('#idKecamatan2').val(vDataKecamatan2);
-                $('#idRegion2').val(vDataRegion2);
+                $('#idAddress1').val(mdl.Address1);
+                $('#idAddress2').val(mdl.Address2);
+                $('#idPostalCode1').val(mdl.PostalCode1);
+                $('#idPostalCode2').val(mdl.PostalCode2);
+                $('#idRt1').val(mdl.Rt1);
+                $('#idRw1').val(mdl.Rw1);
+                $('#idRt2').val(mdl.Rt1);
+                $('#idRw2').val(mdl.Rw2);
+                $('#idKelurahan1').val(mdl.Kelurahan1);
+                $('#idKecamatan1').val(mdl.Kecamatan1);
+                $('#idRegion1').val(mdl.Region1);
+                $('#idKelurahan2').val(mdl.Kelurahan2);
+                $('#idKecamatan2').val(mdl.Kecamatan2);
+                $('#idRegion2').val(mdl.Region2);
             }
         });
 

@@ -6,14 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xsis.Model
+namespace Xsis.ViewModel
 {
-
-    [Table("x_biodata")]
-    public class Biodata
+    public class BiodataViewModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
 
         [Required(AllowEmptyStrings = false)]
@@ -48,12 +44,16 @@ namespace Xsis.Model
         public string pob { get; set; }
 
         [Column(TypeName = "Date")]
-        [DataType(DataType.Date)]
         public DateTime dob { get; set; }
 
         public Boolean gender { get; set; }
 
         public long religion_id { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(50)]
+        public string religion_name { get; set; }
 
         public Nullable<int> high { get; set; }
 
@@ -72,6 +72,11 @@ namespace Xsis.Model
         public string hobby { get; set; }
 
         public long identity_type_id { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(50)]
+        public string identity_type_name { get; set; }
 
         [Column(TypeName = "Varchar")]
         [Required(AllowEmptyStrings = false)]
@@ -107,6 +112,11 @@ namespace Xsis.Model
 
         public long marital_status_id { get; set; }
 
+        [Column(TypeName = "Varchar")]
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(50)]
+        public string marital_status_name { get; set; }
+
         public Nullable<long> addrbook_id { get; set; }
 
         [Column(TypeName = "Varchar")]
@@ -121,6 +131,67 @@ namespace Xsis.Model
         public string mariage_year { get; set; }
 
         public long company_id { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(50)]
+        public string company_name { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(1000)]
+        public string address1 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(20)]
+        public string postalcode1 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(5)]
+        public string rt1 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(5)]
+        public string rw1 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(100)]
+        public string kelurahan1 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(100)]
+        public string kecamatan1 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(100)]
+        public string region1 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(1000)]
+        public string address2 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(20)]
+        public string postalcode2 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(5)]
+        public string rt2 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(5)]
+        public string rw2 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(100)]
+        public string kelurahan2 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(100)]
+        public string kecamatan2 { get; set; }
+
+        [Column(TypeName = "Varchar")]
+        [StringLength(100)]
+        public string region2 { get; set; }
 
         public Nullable<Boolean> is_process { get; set; }
 

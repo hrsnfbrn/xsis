@@ -26,7 +26,7 @@
     </table>
 </div>
 
-<div class="modal fade" id="idMdlCreateKeluarga" tabindex="-1" role="dialog">
+<div class="modal fade" id="idMdlCreateKeluarga" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog" role="document" style="width:800px;">
         <div class="modal-content">
             <div class="modal-header  birubg">
@@ -39,7 +39,7 @@
 </div><!-- /.modal -->
 
 
-<div class="modal fade" id="idMdlEditKeluarga" tabindex="-1" role="dialog">
+<div class="modal fade" id="idMdlEditKeluarga" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog" role="document" style="width:800px;">
         <div class="modal-content">
             <div class="modal-header birubg">
@@ -51,7 +51,7 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="idMdlHapusKeluarga" tabindex="-1" role="dialog">
+<div class="modal fade" id="idMdlHapusKeluarga" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog tengahpls" role="document">
         <div class="modal-content lebarpls">
             <div class="modal-header merahbg">
@@ -94,7 +94,7 @@
                         debugger;
                         a = new Date(parseInt(d.dob.substr(6)));
                         vtanggal = (a.getDate() < 10 ? '0' : '') + a.getDate();
-                        vbulan = a.getMonth();
+                        vbulan = a.getMonth()+1;
                         var vMonthList = { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'Mei', 6: 'Jun', 7: 'Jul', 8: 'Agu', 9: 'Sep', 10: 'Okt', 11: 'Nov', 12: 'Des' };
                         vtahun = a.getFullYear();
                         vDataDob = vtanggal + "-" + vMonthList[vbulan] + "-" + vtahun;

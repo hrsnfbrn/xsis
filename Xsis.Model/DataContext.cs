@@ -29,7 +29,7 @@ namespace Xsis.Model
         public virtual DbSet<Keahlian> Keahlian { get; set; }
         public virtual DbSet<Keluarga> Keluarga { get; set; }
         public virtual DbSet<Keterangan_Tambahan> Keterangan_Tambahan { get; set; }
-        public virtual DbSet<Maritial_Status> Maritial_Status { get; set; }
+        public virtual DbSet<Marital_Status> Marital_Status { get; set; }
         public virtual DbSet<Menu_Access> Menu_Access { get; set; }
         public virtual DbSet<MenuTree> MenuTree { get; set; }
         public virtual DbSet<Note_Type> Note_Type { get; set; }
