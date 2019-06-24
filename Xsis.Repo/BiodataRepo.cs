@@ -19,11 +19,10 @@ namespace Xsis.Repo
                           item in db.Biodata
                           join Religion in db.Religion on item.religion_id equals Religion.id
                           join Identity_Type in db.Identity_Type on item.identity_type_id equals Identity_Type.id
-                          join Company in db.Company on item.company_id equals Company.id
                           join Marital_Status in db.Marital_Status on item.marital_status_id equals Marital_Status.id
                           join AddrBook in db.AddrBook on item.addrbook_id equals AddrBook.id
                           join Address in db.Address on item.id equals Address.biodata_id
-                          where item.is_delete == false
+                         // where item.is_delete == false
                           select new BiodataViewModel
                           {
                               id = item.id,
@@ -64,7 +63,7 @@ namespace Xsis.Repo
                               rw2 = Address.rw2,
                               kelurahan2 = Address.kelurahan2,
                               kecamatan2 = Address.kecamatan2,
-                              region2 = Address.region2,
+                              region2 = Address.region2
                           }
                           ).ToList();
             }
@@ -101,7 +100,7 @@ namespace Xsis.Repo
             }
         }
 
-        public static Biodata GetByID(int ID)
+        public static Biodata GetByID1(int ID)
         {
             Biodata biodata = new Biodata();
             using (DataContext db = new DataContext())
@@ -111,6 +110,50 @@ namespace Xsis.Repo
             }
         }
 
+        public static List<BiodataViewModel> GetByID(int ID)
+        {
+            List<BiodataViewModel> result = new List<BiodataViewModel>();
+            using (var db = new DataContext())
+            {
+                result = (from
+                          item in db.Biodata
+                          join Religion in db.Religion on item.religion_id equals Religion.id
+                          join Identity_Type in db.Identity_Type on item.identity_type_id equals Identity_Type.id
+                          join Marital_Status in db.Marital_Status on item.marital_status_id equals Marital_Status.id
+                          where item.is_delete == false && item.id == ID
+                          select new BiodataViewModel
+                          {
+                              id = item.id,
+                              fullname = item.fullname,
+                              nick_name = item.nick_name,
+                              pob = item.pob,
+                              dob = item.dob,
+                              gender = item.gender,
+                              religion_id = item.religion_id,
+                              religion_name = Religion.name,
+                              high = item.high,
+                              weight = item.weight,
+                              nationality = item.nationality,
+                              ethnic = item.ethnic,
+                              hobby = item.hobby,
+                              identity_type_id = item.identity_type_id,
+                              identity_type_name = Identity_Type.name,
+                              identity_no = item.identity_no,
+                              email = item.email,
+                              phone_number1 = item.phone_number1,
+                              phone_number2 = item.phone_number2,
+                              parent_phone_number = item.parent_phone_number,
+                              child_sequence = item.child_sequence,
+                              how_many_brothers = item.how_many_brothers,
+                              marital_status_id = item.marital_status_id,
+                              marital_status_name = Marital_Status.name,
+                              mariage_year = item.mariage_year,
+                       
+                          }
+                          ).ToList();
+            }
+            return result;
+        }
 
         public static Boolean Deletebiodata(int ID, Biodata biodatamdl)
         {

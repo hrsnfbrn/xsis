@@ -140,6 +140,7 @@
     <Compile Include="Controllers\KeahlianController.cs" />
     <Compile Include="Controllers\KeluargaController.cs" />
     <Compile Include="Controllers\PekerjaanController.cs" />
+    <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\SelectAccessController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -168,6 +169,7 @@
     <Content Include="Views\Biodata\_Edit.cshtml" />
     <Content Include="Views\Keluarga\_Delete.cshtml" />
     <Content Include="Views\SelectAccess\Index.cshtml" />
+    <Content Include="Views\Profil\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

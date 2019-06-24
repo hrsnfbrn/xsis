@@ -346,6 +346,7 @@
 <script>
 
     $(document).ready(function () {
+        debugger;
         var d = new Date();
         var vOption = "";
         for (var i = d.getFullYear() ; i >= 1970; i--) {
@@ -359,6 +360,7 @@
             { false: 'Perempuan', true: 'Laki-laki' };
 
         var vSelectReligion = '';
+        debugger;
         $.ajax({
             url: '/Biodata/SelectReligion',
             method: 'Get',
@@ -376,6 +378,7 @@
         });
 
         var vSelectIdentityType = '';
+        debugger;
         $.ajax({
             url: '/Biodata/SelectIdentityType',
             method: 'Get',
@@ -449,8 +452,9 @@
                 $('#idKecamatan2').val(mdl.Kecamatan2);
                 $('#idRegion2').val(mdl.Region2);
             }
+           
         });
-
+        debugger;
         $('#idBtnCancelBiodata').click(function () {
             $('#idMdlEditBiodata').close;
             location.reload();
