@@ -63,13 +63,13 @@
                 <label>Jenis Kelamin</label>
                 <select class="form-control blueborder" name="gender" id="idGender">
                     <option value="">-Pilih-</option>
-                    <option value="0">Perempuan</option>
-                    <option value="1">Laki-laki</option>
+                    <option value=false>Perempuan</option>
+                    <option value=true>Laki-laki</option>
                 </select>
             </td>
             <td colspan="1">
                 <label>Tgl. Lahir</label>
-                <input type="text" name="dob" class="form-control blueborder" id="idDob">
+                <input type="text" name="dob" class="form-control blueborder" id="idDob"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
             </td>
         </tr>
         <tr>
@@ -105,8 +105,8 @@
 
 <script>
     $(document).ready(function () {
-        var vSelectFamilyTreeType = '';
 
+        var vSelectFamilyTreeType = '';
         $.ajax({
             url: '/Keluarga/SelectFamilyTreeType',
             method: 'Get',
@@ -122,21 +122,7 @@
             }
         });
 
-        var vSelectFamilyRelation = "";
-        $.ajax({
-            url: '/Keluarga/SelectFamilyRelation',
-            method: 'Get',
-            success: function (mdl) {
-                debugger;
-                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
-                    vSelectFamilyRelation = vSelectFamilyRelation +
-                        '<option value="' + d.id + '">' +
-                            d.name +
-                            '</option>';
-                });
-                $('#idFamilyRelation').append(vSelectFamilyRelation); //memasukan data yg sudah di jahit ke dalam body
-            }
-        });
+
 
         var vSelectEducationalLevel = "";
         $.ajax({
@@ -167,6 +153,30 @@
         $('#idBtnCancelKeluarga').click(function () {
             $('#idMdlCreateKeluarga').close;
             location.reload();
+        });
+
+        $('#idFamilyRelation').click(function () {
+            var vTreeType = $('#idFamilyTreeType').val();
+            var vSelectFamilyRelation = "";
+            $.ajax({
+                url: '/Keluarga/SelectFamilyRelation',
+                method: 'Get',
+                success: function (mdl) {
+                    debugger;
+
+                    $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                        if (d.family_tree_type_id == vTreeType) {
+                            debugger;
+                            vSelectFamilyRelation = vSelectFamilyRelation +
+                                '<option value="' + d.id + '">' +
+                                    d.name +
+                                    '</option>';
+                        }
+                    });
+                    $('#idFamilyRelation').empty();
+                    $('#idFamilyRelation').append(vSelectFamilyRelation); //memasukan data yg sudah di jahit ke dalam body
+                }
+            });
         });
 
         $("#idDob").datepicker({ //datepicker

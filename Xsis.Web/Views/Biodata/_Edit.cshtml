@@ -454,6 +454,17 @@
             }
            
         });
+
+        $("#idDob").datepicker({ //datepicker
+            dateFormat: "yy-mm-dd"
+        });
+
+        $('.ClBtnCloseBiodata').click(function () {
+            debugger;
+            $('#idMdlEditBiodata').close;
+            location.reload();
+        });
+
         debugger;
         $('#idBtnCancelBiodata').click(function () {
             $('#idMdlEditBiodata').close;

@@ -64,8 +64,8 @@
                 <label>Jenis Kelamin</label>
                 <select class="form-control blueborder" name="gender" id="idGender">
                     <option value="">-Pilih-</option>
-                    <option value="0">Perempuan</option>
-                    <option value="1">Laki-laki</option>
+                    <option value="false">Perempuan</option>
+                    <option value="true">Laki-laki</option>
                 </select>
             </td>
             <td colspan="1">
@@ -106,36 +106,106 @@
 
 <script>
     $(document).ready(function () {
-        var vSelectGender =
-            {'1':'Laki-laki', '0':'Perempuan'};
 
-        $("#idDob").datepicker({ //datepicker
-            dateFormat: "yy-mm-dd"
+        var vSelectFamilyTreeType = '';
+
+        $.ajax({
+            url: '/Keluarga/SelectFamilyTreeType',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                    vSelectFamilyTreeType = vSelectFamilyTreeType +
+                        '<option value="' + d.id + '">' +
+                            d.name +
+                            '</option>';
+                });
+                $('#idFamilyTreeType').append(vSelectFamilyTreeType); //memasukan data yg sudah di jahit ke dalam body
+            }
         });
+
+        var vSelectFamilyRelation = "";
+        $.ajax({
+            url: '/Keluarga/SelectFamilyRelation',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                    vSelectFamilyRelation = vSelectFamilyRelation +
+                        '<option value="' + d.id + '">' +
+                            d.name +
+                            '</option>';
+                });
+                $('#idFamilyRelation').append(vSelectFamilyRelation); //memasukan data yg sudah di jahit ke dalam body
+            }
+        });
+
+        var vSelectEducationalLevel = "";
+        $.ajax({
+            url: '/Keluarga/SelectEducationalLevel',
+            method: 'Get',
+            success: function (mdl) {
+                debugger;
+                $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
+                    vSelectEducationalLevel = vSelectEducationalLevel +
+                        '<option value="' + d.id + '">' +
+                            d.name +
+                            '</option>';
+                });
+                $('#idEducationalLevel').append(vSelectEducationalLevel); //memasukan data yg sudah di jahit ke dalam body
+            }
+        });
+
+        var vSelectGender =
+            { "false": "Perempuan", "true": "Laki-laki" };
+
+        //$("#idDob").datepicker({ //datepicker
+        //    dateFormat: "yy-mm-dd"
+        //});
 
         $.ajax({
             url: '/Keluarga/AmbilData',
             data: { ID: $('#idget').val() },
             method: 'Get',
             success: function (mdl) {
-
+                a = new Date(parseInt(mdl.dob.substr(6)));
+                vtanggal = (a.getDate() < 10 ? '0' : '') + a.getDate();
+                vbulan = (a.getMonth()+1 < 10 ? '0' : '') + a.getMonth();
+                var vMonthList = { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'Mei', 6: 'Jun', 7: 'Jul', 8: 'Agu', 9: 'Sep', 10: 'Okt', 11: 'Nov', 12: 'Des' };
+                vtahun = a.getFullYear();
+                vDataDob = vtahun + "-" + vbulan + "-" + vtanggal;
+                $("#idDob").datepicker({ //datepicker
+                    dateFormat: "yy-mm-dd"
+                }).datepicker("setDate", mdl.dob);
                 debugger;
-                var vDataGender;
-                if (mdl.gender == true) {
-                    vDataGender = 1;
-                } else {
-                    vDataGender = 0;
-                }
-
+                var str = mdl.gender.toString();
                 $('#idFamilyTreeType').val(mdl.family_tree_type_id).selected;
                 $('#idFamilyRelation').val(mdl.family_relation_id).selected;
                 $('#idName').val(mdl.name);
-                $('#idGender').val(vSelectGender[vDataGender]).selected;
-                $('#idDob').val(mdl.dob);
+                $('#idGender').val(str).selected;
+                $('#idDob').val(vDataDob);
                 $('#idEducationalLevel').val(mdl.educational_level_id).selected;
                 $('#idJob').val(mdl.job);
-                $('#idNotes').val(mdl.notes);z
+                $('#idNotes').val(mdl.notes);
             }
+        });
+
+        $('#idFamilyFamilyTreeType').selected(function () {
+            var vSelectFamilyRelation = "";
+            $.ajax({
+                url: '/Keluarga/SelectFamilyRelation',
+                method: 'Get',
+                success: function (mdl) {
+                    debugger;
+                    $.each(mdl, function (i, d) {
+                        vSelectFamilyRelation = vSelectFamilyRelation +
+                            '<option value="' + d.id + '">' +
+                                d.name +
+                                '</option>';
+                    });
+                    $('#idFamilyRelation').append(vSelectFamilyRelation);
+                }
+            });
         });
 
         $('.ClBtnCloseKeluarga').click(function () {
@@ -149,9 +219,7 @@
             location.reload();
         });
 
-        $("#idDob").datepicker({ //datepicker
-            dateFormat: "yy-mm-dd"
-        }).datepicker("setDate", new Date());
+        
     });
 
      function updatekeluarga(){
@@ -162,7 +230,7 @@
             method: 'Post',
             success: function (mdl) {
                 debugger;
-                if (mdl.Simpan == "Berhasil") {
+                if (mdl.EditSimpan == "Berhasil") {
                     alert("Data berhasil disimpan");
                     //$('.modal').modal('hide');
                     //$.modal.close();

@@ -130,7 +130,7 @@ namespace Xsis.ViewModel
         [StringLength(10)]
         public string mariage_year { get; set; }
 
-        public long company_id { get; set; }
+        public Nullable<long> company_id { get; set; }
 
         [Column(TypeName = "Varchar")]
         [Required(AllowEmptyStrings = false)]

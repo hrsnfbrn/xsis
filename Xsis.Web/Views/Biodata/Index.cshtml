@@ -22,7 +22,7 @@
         <div class="modal-content">
             <div class="modal-header birubg">
                 @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
-                <h4 class="modal-title">Ubah Biodata</h4>
+                <h4 class="modal-title">Ubah Biodata <span style="padding-left:670px;"></span> <button class="ClBtnCloseBiodata" style="background-color:transparent; border:none; overflow:hidden;"><span class="glyphicon glyphicon-remove"></span></button></h4>
             </div>
             <div class="modal-body" id="idBodyEditBiodata">
                 @*<p>One fine body&hellip;</p>*@
@@ -43,12 +43,16 @@
 
         var vStrHtml = '';
         $.ajax({
-            url: '/Biodata/Tampil',
+            url: '/Biodata/AmbilData',
             data: {ID:vDataID},
             method: 'Get',
             success: function (d) {
                 debugger;
+                var vDataReligion = { 1: 'Islam', 2: 'Kristen' };
+                var vDataIdentity = { 1: 'SIM', 2: 'KTP' };
+                var vDataMaritalStatus = {1: 'Menikah', 2:'Belum Menikah'};
                 var vDataGender = { false: 'Perempuan', true: 'Laki-laki' };
+
                 a = new Date(parseInt(d.dob.substr(6)));
                 vtanggal = (a.getDate() < 10 ? '0' : '') + a.getDate();
                 vbulan = a.getMonth() +1;
@@ -86,7 +90,7 @@
                 '<tr class="birutext">' +
                 '<td>Agama</td>' +
                 '<td>:</td>' +
-                '<td input>' + d.religion_nam + '</td>' +
+                '<td input>' + vDataReligion[d.religion_id] + '</td>' +
                 '</tr>'+
                 '<tr class="birutext">' +
                 '<td>Kewarganegaraan, Suku Bangsa</td>' +
@@ -101,12 +105,12 @@
                  '<tr class="birutext">' +
                 '<td>Jenis & Nomor Identitas</td>' +
                 '<td>:</td>' +
-                '<td input>' + d.identity_type_name + ', ' + d.identity_no + '</td>' +
+                '<td input>' + vDataIdentity[d.identity_type_id] + ', ' + d.identity_no + '</td>' +
                 '</tr>'+
                 '<tr class="birutext">' +
                 '<td>Status & Tahun Pernikahan</td>' +
                 '<td>:</td>' +
-                '<td input>' + d.marital_status_name + ' - ' + d.mariage_year + '</td>' +
+                '<td input>' + vDataMaritalStatus[d.marital_status_id] + ' - ' + d.mariage_year + '</td>' +
                 '</tr>';
 
                 $('#idTblBodyBiodata').append(vStrHtml);

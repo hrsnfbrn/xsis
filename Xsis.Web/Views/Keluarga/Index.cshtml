@@ -77,13 +77,13 @@
                 $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
                     debugger;
 
-                    if (d.gender == true) {
-                        debugger;
-                        vDataGender = 'Laki-laki';
-                    }
-                    else{
+                    if (d.gender == false) {
                         debugger;
                         vDataGender = 'Perempuan';
+                    }
+                    else if (d.gender == true) {
+                        debugger;
+                        vDataGender = 'Laki-laki';
                     }
                     
                     if (d.dob == null) {
@@ -100,13 +100,20 @@
                         vDataDob = vtanggal + "-" + vMonthList[vbulan] + "-" + vtahun;
                     }
 
+                    if (d.job == null) {
+                        vDataJob = "-";
+                    }
+                    else {
+                        vDataJob=d.job;
+                    }
+
                     vStrHtml = vStrHtml + ' <tr class="birutext">' +
                         '<td style="border-top:2px solid blue;">' + d.family_relation_name + '</td>' +
                         '<td style="border-top:2px solid blue;">' + d.name + '</td>' +
                         '<td style="border-top:2px solid blue;">' + vDataGender + '</td>' +
                         '<td style="border-top:2px solid blue;">' + vDataDob + '</td>' +
                         '<td style="border-top:2px solid blue;">' + d.educational_level_name + '</td>' +
-                        '<td style="border-top:2px solid blue;">' + d.job + '</td>' +
+                        '<td style="border-top:2px solid blue;">' + vDataJob + '</td>' +
                         '<td style="border-top:2px solid blue;" class="dropdown">' +
                         '<button class="btn birubg dropdown-toggle" type="button" data-toggle="dropdown">More &nbsp;' +
                         '<span class="caret"></span>' +

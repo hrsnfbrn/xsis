@@ -18,7 +18,7 @@ namespace Xsis.Repo
                 result = (from item in db.Keluarga
                           join Educational_Level in db.Educational_Level on item.educational_level_id equals Educational_Level.id
                           join Family_Tree_Type in db.Family_Tree_Type on item.family_tree_type_id equals Family_Tree_Type.id
-                          join Family_Relation in db.Family_Relation on item.family_tree_type_id equals Family_Relation.family_tree_type_id
+                          join Family_Relation in db.Family_Relation on item.family_relation_id equals Family_Relation.id
                           where item.is_delete == false
                           select new KeluargaViewModel
                           {
@@ -30,7 +30,7 @@ namespace Xsis.Repo
                               educational_level_name=Educational_Level.name,
                               job=item.job
                           }
-                          ).ToList();
+                          ).OrderByDescending(item3 => item3.id).ToList();
             }
             return result;
         }
