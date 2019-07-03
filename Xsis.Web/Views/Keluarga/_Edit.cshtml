@@ -169,20 +169,19 @@
             method: 'Get',
             success: function (mdl) {
                 a = new Date(parseInt(mdl.dob.substr(6)));
-                vtanggal = (a.getDate() < 10 ? '0' : '') + a.getDate();
-                vbulan = (a.getMonth()+1 < 10 ? '0' : '') + a.getMonth();
+                vtanggal = ("0" + a.getDate()).slice(-2);
+                vbulan = ("0" + (a.getMonth() + 1)).slice(-2);
                 var vMonthList = { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'Mei', 6: 'Jun', 7: 'Jul', 8: 'Agu', 9: 'Sep', 10: 'Okt', 11: 'Nov', 12: 'Des' };
                 vtahun = a.getFullYear();
                 vDataDob = vtahun + "-" + vbulan + "-" + vtanggal;
                 $("#idDob").datepicker({ //datepicker
                     dateFormat: "yy-mm-dd"
-                }).datepicker("setDate", mdl.dob);
+                }).datepicker("setDate", vDataDob);
                 debugger;
-                var str = mdl.gender.toString();
                 $('#idFamilyTreeType').val(mdl.family_tree_type_id).selected;
                 $('#idFamilyRelation').val(mdl.family_relation_id).selected;
                 $('#idName').val(mdl.name);
-                $('#idGender').val(str).selected;
+                $('#idGender').val(mdl.gender.toString()).selected;
                 $('#idDob').val(vDataDob);
                 $('#idEducationalLevel').val(mdl.educational_level_id).selected;
                 $('#idJob').val(mdl.job);
@@ -206,20 +205,18 @@
                     $('#idFamilyRelation').append(vSelectFamilyRelation);
                 }
             });
-        });
+        });        
+    });
 
-        $('.ClBtnCloseKeluarga').click(function () {
-            debugger;
-            $('#idMdlEditKeluarga').close;
-            location.reload();
-        });
+    $('.ClBtnCloseKeluarga').click(function () {
+        debugger;
+        $('#idMdlEditKeluarga').close;
+        location.reload();
+    });
 
-        $('#idBtnCancelKeluarga').click(function () {
-            $('#idMdlEditKeluarga').close;
-            location.reload();
-        });
-
-        
+    $('#idBtnCancelKeluarga').click(function () {
+        $('#idMdlEditKeluarga').close;
+        location.reload();
     });
 
      function updatekeluarga(){

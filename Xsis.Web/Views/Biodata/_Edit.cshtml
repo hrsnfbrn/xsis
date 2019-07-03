@@ -416,11 +416,21 @@
             method: 'Get',
             success: function (mdl) {
                 debugger;
+                a = new Date(parseInt(mdl.dob.substr(6)));
+                vtanggal = ("0" + a.getDate()).slice(-2);
+                vbulan = ("0" + (a.getMonth() + 1)).slice(-2);
+                var vMonthList = { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'Mei', 6: 'Jun', 7: 'Jul', 8: 'Agu', 9: 'Sep', 10: 'Okt', 11: 'Nov', 12: 'Des' };
+                vtahun = a.getFullYear();
+                vDataDob = vtahun + "-" + vbulan + "-" + vtanggal;
+                $("#idDob").datepicker({ //datepicker
+                    dateFormat: "yy-mm-dd"
+                }).datepicker("setDate", vDataDob);
+
                 $('#idFullname').val(mdl.fullname);
                 $('#idNickName').val(mdl.nick_name);
                 $('#idPob').val(mdl.pob);
-                $('#idDob').val(mdl.dob);
-                $('#idGender').val(vDataGender[mdl.gender]).selected;
+                $('#idDob').val(vDataDob);
+                $('#idGender').val(mdl.gender.toString()).selected;
                 $('#idReligion').val(mdl.religion_id).selected;
                 $('#idHigh').val(mdl.high);
                 $('#idWeight').val(mdl.weight);

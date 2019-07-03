@@ -54,3 +54,17 @@ D:\Xsis\ngxsis\Xsis.Repo\bin\Debug\EntityFramework.SqlServer.xml
 D:\Xsis\ngxsis\Xsis.Repo\obj\Debug\Xsis.Repo.csprojResolveAssemblyReference.cache
 D:\Xsis\ngxsis\Xsis.Repo\obj\Debug\Xsis.Repo.dll
 D:\Xsis\ngxsis\Xsis.Repo\obj\Debug\Xsis.Repo.pdb
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\Xsis.Repo.dll.config
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\Xsis.Repo.dll
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\Xsis.Repo.pdb
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\EntityFramework.dll
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\EntityFramework.SqlServer.dll
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\Xsis.Model.dll
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\Xsis.ViewModel.dll
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\Xsis.Model.pdb
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\Xsis.ViewModel.pdb
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\EntityFramework.xml
+D:\Xsis\xsis\Xsis.Repo\bin\Debug\EntityFramework.SqlServer.xml
+D:\Xsis\xsis\Xsis.Repo\obj\Debug\Xsis.Repo.csprojResolveAssemblyReference.cache
+D:\Xsis\xsis\Xsis.Repo\obj\Debug\Xsis.Repo.dll
+D:\Xsis\xsis\Xsis.Repo\obj\Debug\Xsis.Repo.pdb
