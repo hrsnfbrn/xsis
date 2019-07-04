@@ -9,6 +9,7 @@
             display: block;
         }
 
+
     .blueborder {
         border-color: blue;
     }
@@ -16,6 +17,11 @@
         .blueborder.invalid {
             border-color: red;
         }
+        .input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
 </style>
 
 <form action="" method="post" id="idFrmSubmitKeluarga">
@@ -69,7 +75,10 @@
             </td>
             <td colspan="1">
                 <label>Tgl. Lahir</label>
-                <input type="text" name="dob" class="form-control blueborder" id="idDob"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                <div class="input-container">
+                    <input type="text" name="dob" class="form-control blueborder"  id="idDob" style="border-top-right-radius:0px; border-bottom-right-radius:0px; border-right:none;">
+                    <span class="input-group-addon blueborder" autocomplete="off" style="background-color: transparent; padding: 6px 20px;"><i class="glyphicon glyphicon-calendar" style="font-size: 18px; color:#000080;"></i></span>
+                </div>
             </td>
         </tr>
         <tr>
@@ -122,8 +131,6 @@
             }
         });
 
-
-
         var vSelectEducationalLevel = "";
         $.ajax({
             url: '/Keluarga/SelectEducationalLevel',
@@ -140,7 +147,7 @@
             }
         });
 
-        $("#idDob").datepicker({ //datepicker
+        $("#idDob").datepicker({
             dateFormat: "yy-mm-dd"
         });
 
@@ -155,7 +162,7 @@
             location.reload();
         });
 
-        $('#idFamilyRelation').click(function () {
+        $('#idFamilyTreeType').change(function () {
             var vTreeType = $('#idFamilyTreeType').val();
             var vSelectFamilyRelation = "";
             $.ajax({
@@ -174,14 +181,31 @@
                         }
                     });
                     $('#idFamilyRelation').empty();
-                    $('#idFamilyRelation').append(vSelectFamilyRelation); //memasukan data yg sudah di jahit ke dalam body
+                    $('#idFamilyRelation').append(vSelectFamilyRelation);
+
+                    vSelectGender = '<option value="true">Laki-laki</option>';
+                    $('#idGender').empty();
+                    $('#idGender').append(vSelectGender);
                 }
             });
         });
 
-        $("#idDob").datepicker({ //datepicker
-            dateFormat: "yy-mm-dd"
-        }).datepicker("setDate", new Date());
+        $('#idFamilyRelation').change(function () {
+            if ($('#idFamilyRelation').val() == 1 || $('#idFamilyRelation').val() == 3) {
+                vSelectGender = '<option value="true">Laki-laki</option>';}
+            else if ($('#idFamilyRelation').val() == 2 || $('#idFamilyRelation').val()==5) {
+                vSelectGender = '<option value="perempuan">Perempuan</option>';
+            }
+            else {
+                vSelectGender = '<option value="true">Laki-laki</option>'+
+                '<option value="false">Perempuan</option>';
+            }
+
+            $('#idGender').empty();
+            $('#idGender').append(vSelectGender);
+        });
+        
+
     });
 
      function simpankeluarga(){

@@ -16,6 +16,10 @@
         .blueborder.invalid {
             border-color: red;
         }
+        .input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
 </style>
 
 <form action="" method="post" id="idFrmEditBiodata">
@@ -52,8 +56,11 @@
                 </small>
             </td>
             <td colspan="6">
-                <label>Tgl. Lahir (yyyy-mm-yy) *</label>
-                <input type="text" name="dob" class="form-control blueborder" data-validate="required" id="idDob">
+                <label>Tgl. Lahir (yyyy-mm-dd) *</label>
+                <div class="input-container">
+                    <input type="text" name="dob" class="form-control blueborder" id="idDob" style="border-top-right-radius:0px; border-bottom-right-radius:0px; border-right:none;">
+                    <span class="input-group-addon blueborder" autocomplete="off" style="background-color: transparent; padding: 6px 20px;"><i class="glyphicon glyphicon-calendar" style="font-size: 18px; color:#000080;"></i></span>
+                </div>
                 <small role="alert"
                        aria-hidden="true"
                        data-validation-message="required">
@@ -369,9 +376,7 @@
 
                 $.each(mdl, function (i, d) { //menjahit data ke dalam tabel
                     vSelectReligion = vSelectReligion +
-                        '<option value="' + d.id + '">' +
-                            d.name +
-                            '</option>';
+                        '<option value="' + d.id + '">' +d.name +'</option>';
                 });
                 $('#idReligion').append(vSelectReligion); //memasukan data yg sudah di jahit ke dalam body
             }
@@ -422,7 +427,7 @@
                 var vMonthList = { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'Mei', 6: 'Jun', 7: 'Jul', 8: 'Agu', 9: 'Sep', 10: 'Okt', 11: 'Nov', 12: 'Des' };
                 vtahun = a.getFullYear();
                 vDataDob = vtahun + "-" + vbulan + "-" + vtanggal;
-                $("#idDob").datepicker({ //datepicker
+                $("#idDob").datepicker({
                     dateFormat: "yy-mm-dd"
                 }).datepicker("setDate", vDataDob);
 
@@ -462,13 +467,8 @@
                 $('#idKecamatan2').val(mdl.Kecamatan2);
                 $('#idRegion2').val(mdl.Region2);
             }
-           
         });
-
-        $("#idDob").datepicker({ //datepicker
-            dateFormat: "yy-mm-dd"
-        });
-
+     
         $('.ClBtnCloseBiodata').click(function () {
             debugger;
             $('#idMdlEditBiodata').close;
